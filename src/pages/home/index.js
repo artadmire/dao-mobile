@@ -1,21 +1,32 @@
 import React from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
-
+import UpcomingProject from './components/upcomingProjects/index.js'
+import PreviousProject from './components/previousProjects/index.js'
 function Home(props) {
-  function goAbout(e) {
-    const { handleClick } = props
-    e.preventDefault();
-    typeof handleClick === 'function' && handleClick('2')
+  function handleClick() {
+    const { onHandleClick } = props
+    typeof onHandleClick === 'function' && onHandleClick()
   }
   return (
     <div className="home">
       <div className="des">
-        <p className="title">Building Dreams</p>
-        <p>for</p>
-        <p>Blockchain Entrepreneurs</p>
+        <div className="title">DAOStarter</div>
+        <div className="title1">The Booster for Crypto Projects</div>
+        <div className="title2">Providing the access to funding blockchain projects</div>
       </div>
-      <a href="" onClick={goAbout} className="about">ABOUT  FFCAP</a>
+       <UpcomingProject/>
+       <PreviousProject/>
+       <div className="user-applay">
+         <img src  style={{width:"112px",height:"24px",background:"red"}}/>
+        <div className="title">
+          Start your dream on
+        </div>
+        <div className="title title2">
+          DAOStarter ?
+        </div>
+        <span onClick={handleClick} className="start">APPLY HERE</span>
+       </div>
       <MyBottom className="home-bottom"/>
     </div>
   );

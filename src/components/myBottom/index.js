@@ -11,6 +11,7 @@ function myBottom(props) {
   const { className = ''} = props
   return (
     <div className={`myBottom ${className}`}>
+      <p className="terms-privacy"><a className="terms">Terms</a><a>Privacy</a></p>
       <div className="icon">
         <a href="javascript:;"><img src={imgURL} /></a>
         <a href="javascript:;" ><img src={imgURL2}/></a>
@@ -18,8 +19,8 @@ function myBottom(props) {
         <a href="javascript:;"><img src={imgURL4}/></a>
         <a href="javascript:;"><img src={imgURL5}/></a>
       </div>
-      <p className="contact">contact@ffcap.com</p>
-      <p className="copy">© 2021 FFCAP</p>
+      <p className="contact"><img src={imgURL} style={{width:"16px",height:"22px"}}/>DAOStarter</p>
+      <p className="copy">©2021 DAOStarter. All rights reserved.</p>
     </div>
   );
 }

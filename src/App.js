@@ -46,6 +46,7 @@ function App() {
         <div className="content">
         <header>
           <h2 onClick={goHome} className={tabKey !== '1' ? 'blackBj' : ''}></h2>
+          <span className="unlock-wallet">Unlock Wallet</span>
           {!showMenu ? <img onClick={showMenus} src={ tabKey === '1' ?menu : whiteMenu}/> : <img onClick={hideMenu} src={close}/>}
         </header>
         {showMenu && <Menu myKey={tabKey} onHandelClcik={handleClick} />}

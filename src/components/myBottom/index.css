@@ -1,3 +1,23 @@
+.myBottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.myBottom .terms-privacy{
+font-size: 13px;
+font-family: Poppins-Bold, Poppins;
+font-weight: bold;
+
+line-height: 20px;
+display: block;
+}
+.myBottom .terms-privacy a{
+  color: #000000;
+}
+.myBottom .terms-privacy .terms{
+  padding-right: 32px;
+}
 .icon {
   display: flex;
 }
@@ -17,20 +37,20 @@
   height: 34px;
 }
 .myBottom .contact{
-  font-family: Poppins-Medium, Poppins;
-  font-weight: 500;
-  color: #FFFFFF;
-  line-height:20px;
-  margin-top: 11px;
-  margin-bottom: 8px;
-  font-size: 13px;
+  font-size: 18px;
+  font-family: TwCenMT-Bold, TwCenMT;
+  font-weight: bold;
+  color: #000000;
+  line-height: 19px;
+  margin-top: 26px;
+}
+.myBottom .contact img{
+  margin-right: 5px;;
 }
 .myBottom .copy{
-  height: 20px;
+  font-size: 11px;
   font-family: Poppins-Regular, Poppins;
-  opacity: 0.4;
-  font-size: 10px;
   font-weight: 400;
-  color: #FFFFFF;
-  line-height: 14px;
+  color: #666666;
+  line-height: 17px;
 }

@@ -1,0 +1,19 @@
+.info{
+    padding:32px 35px 0 20px
+}
+.info .info-item{
+    display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding:21px 42px 21px 21px;
+     border-radius: 7px;
+     border: 2px solid #F7F4FC;
+     margin-bottom: 16px;
+}
+.info .info-item img{
+    width:70px;
+    height:70px;
+}
+.info .info-item p{
+    width:88px;
+}

@@ -1,0 +1,24 @@
+.up-coming-project-item {
+    border-radius: 10px;
+    border: 1px solid #F7F4FC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.up-coming-project-item img{
+    width: 126px;
+    height: 41px;
+    margin-top: 10px;
+}
+
+.up-coming-project-item .details{
+    font-size: 14px;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
+    color: #000000;
+    line-height: 21px;
+    margin-bottom: 20px;
+}

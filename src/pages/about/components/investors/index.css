@@ -1,0 +1,29 @@
+.investor {
+    padding:40px  35px 0 20px
+}
+.investor .investor-title{
+    padding-bottom: 16px;;
+}
+
+.investor .investor-content{
+    background: #131517;
+    border-radius: 20px;
+}
+
+.investor .investor-item{
+    display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding:21px 42px 21px 21px;
+     border-radius: 7px;
+   
+     margin-bottom: 16px;
+}
+.investor .investor-item img{
+    width:70px;
+    height:70px;
+}
+.investor .investor-item p{
+    width:88px;
+    color:#fff;
+}

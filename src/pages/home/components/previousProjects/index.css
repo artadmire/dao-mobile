@@ -1,0 +1,24 @@
+.previous-projects{
+    padding:0 25px;
+    background: #eaebf2;
+}
+.previous-projects-title{
+    display: flex;
+    justify-content: space-between;
+font-size: 13px;
+font-family: Poppins-Medium, Poppins;
+font-weight: 500;
+color: #4A4A4A;
+line-height: 20px;
+padding-top: 48px;
+}
+.previous-projects-title img{
+    width:16px;
+    height: 16px;
+}
+.previous-projects-content{
+    margin-top: 24px;
+}
+.show-all{
+    padding:0 0 40px
+}
