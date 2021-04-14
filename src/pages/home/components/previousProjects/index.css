@@ -1,5 +1,5 @@
 .previous-projects{
-    padding:0 25px;
+    padding:24px 25px 0;
     background: #eaebf2;
 }
 .previous-projects-title{
@@ -17,8 +17,17 @@ padding-top: 48px;
     height: 16px;
 }
 .previous-projects-content{
-    margin-top: 24px;
+    margin-top:48px;
 }
 .show-all{
-    padding:0 0 40px
+    padding:0 0 40px;
+    text-align: center;
 }
+.main-title{
+      background: linear-gradient(to right, #3023AE, #C86DD7);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 20px;
+      font-weight: 800;
+      line-height:30px;
+  }

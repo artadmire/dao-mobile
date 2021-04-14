@@ -6,10 +6,10 @@ function UpcomingProject() {
     return (
         <div className="upcoming-projects">
       
-         <p>Upcoming Projects</p>
+         <div className="main-title">Upcoming Projects</div>
         <div className="upcoming-projects-content">
         {
-                     upcomingProjects.slice(2).map((index,item)=> <UpcomingProjectItem/>)
+                     upcomingProjects.slice(2).map((index,item)=> <UpcomingProjectItem key={index}/>)
                      }
         </div>
         </div>

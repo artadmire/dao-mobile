@@ -1,18 +1,12 @@
 import React from 'react'
 import './index.css'
-
-
+import { NavLink } from 'react-router-dom'
 function Menu(props) {
-  const { myKey, onHandelClcik} = props
-  function handleClick(key) {
-    typeof onHandelClcik === 'function' && onHandelClcik(key)
-  }
   return (
     <div className="Menu">
-       <p onClick={() => handleClick('1')} className={`${myKey === '1' && 'active'}`}>Welcome</p>
-       <p onClick={() => handleClick('2')} className={myKey === '2' ? 'active' : ''}>About</p>
-       <p onClick={() => handleClick('3')}  className={myKey === '3' ? 'active' :'' }>Investments</p>
-       <p onClick={() => handleClick('4')} className={myKey === '4' ? 'active' : ''}>Contact</p>
+       <p><NavLink className="navtab" to='/'>Welcome</NavLink></p>
+       <p><NavLink className="navtab" to='/about'>About</NavLink></p>
+       <p><NavLink className="navtab" to='/account'>Account</NavLink></p>
     </div>
   );
 }

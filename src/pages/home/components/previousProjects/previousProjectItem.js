@@ -4,11 +4,12 @@ import './previousProjectItem.css'
 export default function PreviousProjectItem(props) {
     console.log("props",props)
     return (
-        <div className="previous-project-item" style={{"margin-right":props.styles.marginRight || '',"margin-bottom":props.styles.marginBottom || ''}}>
+        <div className="previous-project-item" >
            <div className="section1">
                 <img   src={Twitter}/>
                 <span>ethbox</span>
            </div>
+           <div className="border-top"></div>
            <div className="section2">
                 <ul>
                     <li>
@@ -25,6 +26,8 @@ export default function PreviousProjectItem(props) {
                     </li>
                 </ul>
            </div>
+           <div className="border-top"></div>
+
             <div className="section3">
             <ul>
             <li>

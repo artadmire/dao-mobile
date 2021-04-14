@@ -3,7 +3,7 @@ p{
   padding: 0;
 }
 .my-about {
-  background: #fff;
+  background: #f0f2f5;
 }
 .my-about h1 {
   font-size: 24px;
@@ -90,7 +90,8 @@ p{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 48px
+  margin-top: 48px;
+  margin-bottom: 36px;
 }
 .myBottom.my-about-bottom .contact {
   color: #EFBB24;

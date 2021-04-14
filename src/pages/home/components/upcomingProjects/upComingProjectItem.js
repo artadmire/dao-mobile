@@ -6,7 +6,7 @@ export default function upComingProjectItem(props) {
         <div className="up-coming-project-item">
              <img src/>
             <div className="details">
-                aa
+            Starts: in <span>1</span> day(s)/ Whitelist Closed
             </div>
         </div>
     )

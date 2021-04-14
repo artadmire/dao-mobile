@@ -4,7 +4,7 @@ p{
 }
 .home {
   width:100%;
-  margin-top: 35px;
+  margin-top: 34px;
   background: #f0f2f5;
 }
 
@@ -55,7 +55,8 @@ margin-top: 24px;
 text-align: center;
 }
 .home-bottom {
-  margin-top: 124px;
+  margin-top:24px;
+  margin-bottom: 36px;
 }
 .user-applay{
  

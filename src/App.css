@@ -32,30 +32,34 @@ p {
 .content>header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
   padding:0 40px;
 }
 .content>header>h2 {
-  width: 99px;
-  height: 27px;
-  background: url('https://ffcap.oss-cn-hangzhou.aliyuncs.com/imgs/bzu2.png');
-  background-size: 99px 27px;
+  margin-bottom: 0 ;
 }
-.content>header h2.blackBj {
-  background: url('https://ffcap.oss-cn-hangzhou.aliyuncs.com/imgs/blomg.png');
-  background-size: 99px 27px;
 
+.content>header>h2 span:nth-of-type(1) {
+  display: inline-block;
+  width: 16px;
+  height: 22px;
+}
+.content>header>h2 span:nth-of-type(2) {
+font-size: 18px;
+font-family: TwCenMT-Bold, TwCenMT;
+font-weight: bold;
+color: #000000;
+line-height: 19px;
 }
 .content>header .unlock-wallet{
-  display: block;
-  width: 123px;
-height: 35px;
+ padding: 8px;
 background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
 box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.15);
 border-radius: 3px;
 border: 1px solid #F5F5F5;
 text-align: center;
-line-height: 35px;
+line-height: 19px;
 font-size: 13px;
 font-family: Poppins-Bold, Poppins;
 font-weight: bold;
