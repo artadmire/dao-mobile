@@ -1,7 +1,10 @@
 import React from 'react'
 import './index.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink,withRouter } from 'react-router-dom'
 function Menu(props) {
+   props.history.listen((path)=>{
+    console.log("path",path)
+   })
   return (
     <div className="Menu">
        <p><NavLink className="navtab" to='/'>Welcome</NavLink></p>
@@ -11,4 +14,4 @@ function Menu(props) {
   );
 }
 
-export default Menu;
+export default withRouter(Menu);

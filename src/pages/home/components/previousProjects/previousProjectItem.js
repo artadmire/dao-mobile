@@ -2,8 +2,9 @@ import React from 'react'
 import Twitter from '../../../../assets/img/twitter@2x.png'
 import './previousProjectItem.css'
 export default function PreviousProjectItem(props) {
-    console.log("props",props)
     return (
+        <div className="previous-project-item-wrap">
+        
         <div className="previous-project-item" >
            <div className="section1">
                 <img   src={Twitter}/>
@@ -51,6 +52,7 @@ export default function PreviousProjectItem(props) {
             <div className="section4">
                 <span className="unlock-wallet">Unlock Wallet</span>
             </div>
+        </div>
         </div>
     )
 }

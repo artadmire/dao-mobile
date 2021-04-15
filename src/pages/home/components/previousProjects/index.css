@@ -5,12 +5,12 @@
 .previous-projects-title{
     display: flex;
     justify-content: space-between;
-font-size: 13px;
-font-family: Poppins-Medium, Poppins;
-font-weight: 500;
-color: #4A4A4A;
-line-height: 20px;
-padding-top: 48px;
+    font-size: 13px;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
+    color: #4A4A4A;
+    line-height: 20px;
+    padding-top: 48px;
 }
 .previous-projects-title img{
     width:16px;
@@ -20,14 +20,15 @@ padding-top: 48px;
     margin-top:48px;
 }
 .show-all{
+    display: block;
     padding:0 0 40px;
     text-align: center;
 }
 .main-title{
-      background: linear-gradient(to right, #3023AE, #C86DD7);
-      -webkit-background-clip: text;
-      color: transparent;
-      font-size: 20px;
-      font-weight: 800;
-      line-height:30px;
+    background: linear-gradient(to right, #3023AE, #C86DD7);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 800;
+    line-height:30px;
   }

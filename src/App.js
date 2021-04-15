@@ -20,8 +20,9 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <Route path="/about" component={About}></Route>
-              <Route path="/parameter" component={Parameter}></Route>
+              <Route path="/account" component={Parameter}></Route>
               <Route path="/project-list" component={PreviousList}></Route>
+              <Route path="/menu" component={Menu}></Route>
             </Switch>
           </BrowserRouter>
       </div>

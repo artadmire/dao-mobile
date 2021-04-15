@@ -1,0 +1,79 @@
+.my-level{
+  box-sizing: border-box;
+  padding-right: 37px;
+}
+.my-level p{
+  margin-bottom: 0;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-family: Poppins-Medium, Poppins;
+  font-weight: 500;
+  color: #000000;
+  line-height: 17px;
+}
+.my-level .level-top-bg {
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%)
+}
+.my-level .wrap-level-top {
+  position: relative;
+  height: 20px;
+  background: rgb(252,245,254);
+  width: 100%;
+  border-radius: 5px;
+
+}
+.my-level .wrap-level-top  .level-top {
+  position: absolute;
+  border: 1px solid;
+  border-color:linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
+  height: 100%;
+  width:  100%;
+  border-radius: 5px;
+  display: flex;
+  background: transparent;
+  justify-content: space-between;
+
+}
+
+.my-level  .level-top .dashed {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #9B9B9B, #9B9B9B 5px, transparent 5px, transparent);
+  background-size: 100% 10px;
+}
+.my-level  .level-top .dashed:nth-of-type(1), .my-level  .level-top .dashed:nth-of-type(5) {
+  width: 0;
+}
+
+.my-level .level-bottom{
+  margin-top: 5px;
+  display: flex;
+  /* justify-content: space-between; */
+}
+.my-level .level-bottom li{
+  font-size: 11px;
+  font-family: Poppins-Medium, Poppins;
+  font-weight: 500;
+  color: #000000;
+  line-height: 20px;
+}
+.my-level .level-bottom li:nth-of-type(1) {
+  margin-left: 0px;
+}
+.my-level .level-bottom li:nth-of-type(2) {
+  margin-left: 18px;
+}
+.my-level .level-bottom li:nth-of-type(3) {
+  margin-left: 28px;
+}
+.my-level .level-bottom li:nth-of-type(4) {
+  margin-left: 38px;
+}
+.my-level .level-bottom li:nth-of-type(5) {
+  margin-left: 8px;
+}
+
+

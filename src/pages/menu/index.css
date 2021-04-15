@@ -1,20 +1,24 @@
 .Menu {
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-top: 160px;
   height: 100%;
   flex-direction: column;
   background: rgb(240,244,245);
 
 }
-.Menu p {
+.Menu .navtab {
   font-size: 16px;
-  font-family: PlayfairDisplay-Black, PlayfairDisplay;
-  font-weight: 900;
-  color: black;
-  line-height: 21px;
-  margin-bottom: 40px;
+  font-family: Poppins-Medium, Poppins;
+  font-weight: 500;
+  color: #000000;
+  line-height: 25px;
+  margin-bottom: 36px;
 }
-.Menu p.active {
-  color: #EFBB24
+.Menu .navtab.active {
+  background: linear-gradient(to right, #3023AE, #C86DD7);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 20px;
+ 
 }

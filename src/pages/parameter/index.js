@@ -1,40 +1,14 @@
 import React, {useState} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
-
+import Level from '../../components/Level'
 import bronze from '../../assets/img/bronze@2x.png'
 
 function Parameter () {
   return (
     <div className="my-parameter">
       <div className="parameter-content">
-          <div className="level">
-                You don’t have a DAOStarter Tier yet. <br/>
-                Please upgrade your level.
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <div className="grade">
-                     <span>
-                       start
-                     </span>
-                     <span>
-                     bronze
-                     </span>
-                     <span>
-                     silver
-                     </span>
-                     <span>
-                     gold
-                     </span>
-                     <span>
-                     platinum
-                     </span>
-                </div>
-          </div>
+         <Level/>
         <div className="parameter-detail">
           <div className="parameter-detail-top">
           <div className="ethbox-details">

@@ -147,7 +147,7 @@ p{
     line-height: 20px;
   }
   .ethbox-details-title-border{
-    height: 2px;
+      height: 1px;
       background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
   }
   .ethbox-details-website{
