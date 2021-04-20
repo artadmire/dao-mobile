@@ -1,17 +1,34 @@
-import React ,{useState}from 'react'
+import React ,{useState, useEffect}from 'react'
 import './index.css'
 import PreviousProjectItem from '../home/components/previousProjects/previousProjectItem'
 import MyBottom from '../../components/myBottom'
+import { getPerviousProjects} from '@/service'
+import { perviousProjectsData} from '@/service/mock'
 
 export default function PreviousList() {
-    const [list,setList] = useState([1,2,3,5,6,7])
+    let [list, setList]  = useState(perviousProjectsData)
+
+    useEffect(async () => {
+      fetchData()
+    }, [])
+  
+    async function fetchData () {
+      try {
+        let res = await getPerviousProjects();
+        res = res.data;
+        if (!res || !res.data || !res.data.data ||  !res.data.data.length) {throw new Error('')}
+        setList(res.data.data)
+      } catch (error) {
+        setList([])
+      }
+    }
     return (
         <div className="previous-list-content">
             <div >
                 {
-                    list.map((index,item)=><PreviousProjectItem key={index}/>)
+                    list.map((item,index)=><PreviousProjectItem data={item} key={index}/>)
                 }
-            </div>
+            </div> 
                <MyBottom className="previous-list-bottom"/>
         </div>
        
