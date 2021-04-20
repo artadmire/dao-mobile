@@ -16,7 +16,7 @@ import {  withRouter } from 'react-router-dom'
     history.push('/')
   }
     return (
-        <header>
+        <header style={{background: '#fff'}} className="header">
           <h2 onClick={goHome}><span>D</span><span>DAOStarter</span></h2>
           <span className="unlock-wallet">Unlock Wallet</span>
           {showMenu ? <img onClick={hideMenu} src={close}/>

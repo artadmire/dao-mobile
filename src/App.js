@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/header/index.js'
 import Home from './pages/home'
 import About from './pages/about'
+import Apply from './pages/apply'
 import Menu from './components/menu'
 import Parameter from  './pages/parameter'
 import PreviousList from  './pages/previous/index'
@@ -24,6 +25,7 @@ function App() {
               <Route exact path="/" component={Home}></Route>
               <Route path="/about" component={About}></Route>
               <Route path="/account" component={Parameter}></Route>
+              <Route path="/apply" component={Apply}></Route>
               <Route path="/project-list" component={PreviousList}></Route>
               <Route path="/parameter" component={Parameter}></Route>
               <Redirect to='/'/>

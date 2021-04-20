@@ -11,16 +11,16 @@ function About() {
         <div className="contents">
         <div>
           <p className="desc">
-               DAOStarter is a public token launchpad, a service platform for crypto projects.
+          DAOStarter is a public token launchpad, serving for crypto inveestors & projects.
           </p>
           <p className="desc">
-               It will act as the final bridge between early-stage projects and the community before the project goes fully public.            
+          DAOStarter is deployed on BSC, Ethereum and HECO, and cross-chain bridge will be developed to swap assets between different chains.
           </p>
           <p className="desc">
-              DAOStarter has an unique level system which requires users to lock-in a certain amount of DST tokens to participate in the launch platform.
+          As the final bridge bettween early-stage projects and the crypto community, DAOStarter will pay more attentions on project research & value evaluation to reduce the risk of investors.
            </p>
           <p className="desc">
-            As a service platform, DAOStarter will also offer several KYC options for upcoming projects.         
+            An unique investors rating system is adopted based on the lock-in amounts of DST tokens in smart contract.  Besides, KYC & whitelist is also offered for investors.
          </p>
         </div>
         <Info/>
