@@ -1,18 +1,43 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './index.css'
-import  CrossChainSwaps  from '../../../../assets/img/Cross-chain Swaps@2x.png'
+const listA  = [
+    {
+      text: 'Cross-chain Swaps',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/Cross-chainSwaps%402x.png'
+    },
+    {
+      text: 'Fixed and Dynamic Swaps',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/FixedandDynamicSwaps%402x.png'
+    },
+    {
+      text: 'Anti-scam Features',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/Anti-scamFeatures%402x.png'
+    },
+    {
+      text: 'Full KYC Integration',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/FullKYCIntegration%402x.png'
+    },
+    {
+      text: 'Governance Model',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/GovernanceModel%402x.png'
+    },
+    {
+      text: 'Permissionless Listing',
+      imgUrl: 'https://daostarter.oss-cn-hangzhou.aliyuncs.com/PermissionlessListing%402x.png'
+    },
+  ]
 export default function Info() {
-    const [list] = useState([1,2,5,6,7,78,9,9])
+    const [list] = useState(listA)
     return (
         <div className="info">
             {
-                list.map((index,item)=>{
+                list.map((item,index)=>{
                  return(
 
-                    <div className="info-item">
-                         <img  src={CrossChainSwaps}/>
-                         <p>Cross-chain Swaps</p>
-                    </div>
+                    <a href="javascript:;" key={index} className="info-item">
+                         <img  src={item.imgUrl}/>
+                         <p>{item.text}</p>
+                    </a>
                  )  
                 })
             }

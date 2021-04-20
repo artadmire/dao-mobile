@@ -1,7 +1,6 @@
-import React,{useState} from 'react'
-// import menu from '../../assets/img/menu@2x.png'
-import whiteMenu from '../../assets/img/menu@2x2.png'
-import close from '../../assets/img/delete2.png'
+import React from 'react'
+import whiteMenu from '@/assets/img/menu@2x2.png'
+import close from '@/assets/img/delete2.png'
 import {  withRouter } from 'react-router-dom'
 
  function Header(props) {
