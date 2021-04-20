@@ -1,14 +1,108 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
 import Level from '../../components/Level'
 import bronze from '../../assets/img/bronze@2x.png'
+import './index.css'
+import { store } from '@/store'
+import { getDeposit } from '@/service'
+import moment from 'moment'
+import {  approve, offer, claim} from '@/events/contracts/transaction'
+import {connect} from 'react-redux'
+import ctx from '@/events';
+import {convertByWei} from '@/utils/number'
 
-function Parameter () {
+function Parameter (props) {
+  const [data, setData] = useState({})
+  const [leftTime, setLeftTime] = useState(0)
+  const [days, setDays] = useState('00')
+  const [hours, setHours] = useState('00')
+  const [minutes, setMins] = useState('00')
+  const [seconds, setSeconds] = useState('00')
+  const [value, setValue] = useState(0)
+
+  const { isApprove: _approve, account, balances = 0,
+    totalSupply = 0, claimed = 0 } = props
+  const balance = ((balances || 0) / 10000000000).toFixed(4) || 0
+
+  useEffect(() => {
+    // 初始化区块链库
+    ctx.event.emit('initEthereum');
+  }, []);
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      getTimes()
+    }, 1000)
+
+    if (setLeftTime < 0) {
+      clearInterval(timer)
+      timer = null
+    }
+    return () => {
+      clearInterval(timer)
+      timer = null
+    }
+  }, [leftTime])
+
+  useEffect(async () => {
+    account && fetchData(account)
+  }, [account])
+
+  function changeValue (e) {
+    setValue(e.target.value)
+    console.log(ctx.data)
+
+  }
+
+  async function fetchData (account) {
+    try {
+      const res = await getDeposit({account});
+      if (!res || !res.data || !res.data.data) {throw new Error('')}
+      setData(res.data.data)
+      setLeftTime(res.data.data.harvestDate)
+    } catch (error) {
+      setData({})
+    }
+  }
+
+  // 授权
+  async function handleApprove () {
+    // if (_approve)  {return}
+    const res = await approve();
+    res && store.dispatch({type: 'ISAPPROVE', payload: true})
+  }
+
+  // 质押
+  async function handleDeposit () {
+    if (!_approve || leftTime > 0)  {return}
+    await offer(value);
+  }
+
+  // harvest操作
+  async function handleHarvest () {
+    if (leftTime > 0) {return}
+    claim(value)
+  }
+  function getTimes () {
+    const _leftTime = leftTime - 1000
+    setLeftTime(_leftTime)
+    if (_leftTime < 0) {return}
+    let _days = parseInt(_leftTime / 1000 / 60 / 60 / 24);
+    setDays(_days)
+    let _hours = parseInt(_leftTime  / 1000 / 60 / 60 % 24);
+    setHours(_hours)
+    let _minutes = parseInt(_leftTime / 1000 / 60 % 60);
+    setMins(_minutes)
+    let _seconds = parseInt(_leftTime / 1000 % 60);
+    setSeconds(_seconds)
+
+  }
+  const pre = data.endDate * 1 - data.startDate * 1
   return (
     <div className="my-parameter">
       <div className="parameter-content">
-         <Level/>
+        <Level level={data.level || 0} />
         <div className="parameter-detail">
           <div className="parameter-detail-top">
           <div className="ethbox-details">
@@ -22,22 +116,12 @@ function Parameter () {
                 <span>
                                  Website:
                 </span>
-                <a>
-                             https://www.ethbox.org/
+                <a href={data.website}>
+                {data.website}
                 </a>
               </div>
               <p>
-                          ethbox is a DuckDAO strategic<br/>
-                          partner and an up and coming escrow <br/>
-                          service specializing in security,privacy,<br/> 
-                          and effectiveness for the OTC <br/>
-                          cryptocurrency  market. It serves as a <br/>
-                          trustable, transparent and always-valid <br/>
-                          intermediary between two parties <br/>
-                          willing to send cryptocurrency one way<br/> 
-                          or both ways. Instead of sending funds <br/>
-                          directly to each other, funds are relayed <br/>
-                          through the ethbox smart contract.
+              {data.details}
               </p>
             </div>
             <div className="deposited">
@@ -48,56 +132,55 @@ function Parameter () {
                               Total Rewards
                   </span>
                   <span>
-                              0 EBOX Token
+                  {data.totalRewards || 0} EBOX Token
                   </span>
 
                 </li>
                 <li>
-                  <span>
-                              Total Rewards
+                <span>
+                  Deposit token
                   </span>
                   <span>
-                              0 EBOX Token
+                    {` ${data.depositToken || '-'}`}
                   </span>
                 </li>
                 <li>
-                  <span>
-                              Total Rewards
+                <span>
+                  Deposit period
                   </span>
                   <span>
-                              0 EBOX Token
+                    {data.depositPeriod || 0} minutes
                   </span>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <span>
-                              Total Rewards
+                <span>
+                    Total USDC deposited
                   </span>
                   <span>
-                              0 EBOX Token
+                    {data.totalDeposited || 0}
                   </span>
 
                 </li>
                 <li>
-                  <span>
-                              Total Rewards
+                <span>
+                  Max. deposit available
                   </span>
                   <span>
-                              0 EBOX Token
+                    {data.maxDepositAvailable || 0}
                   </span>
                 </li>
                 <li>
-                  <span>
-                              Total Rewards
+                <span>
+                  Your Share
                   </span>
                   <span>
-                              0 EBOX Token
+                    {data.yourShare || 0}%
                   </span>
                 </li>
               </ul>
                 </div>
-           
 
               <div className="dates-detail">
                 <div className="dates-detail-title" >
@@ -105,8 +188,10 @@ function Parameter () {
                   <span>End Date</span>
                 </div>
                 <div className="dates-detail-time">
-                  <span>29-03-2021 01:30 UTC</span>
-                  <span>Finished</span>
+                  <span>{moment(data.startDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span>
+                  {
+                    pre > 0 ? <span>{moment(data.endDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span> : <span>Finished</span>
+                  }
                 </div>
                 <div className="dates-detail-process">
 
@@ -215,4 +300,6 @@ function Parameter () {
   );
 }
 
-export default Parameter;
+
+export default connect(({isApprove, account, balances, totalSupply, claimed}) =>
+  ({isApprove, account, balances, totalSupply, claimed}))(Parameter);
