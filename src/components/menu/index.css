@@ -1,10 +1,14 @@
 .Menu {
   display: flex;
   align-items: center;
-  padding-top: 160px;
   height: 100%;
+  width: 100%;
   flex-direction: column;
   background: rgb(240,244,245);
+  padding-top: 120px;
+  position: fixed;
+  top: 100px;
+  left: 0;
 
 }
 .Menu .navtab {
