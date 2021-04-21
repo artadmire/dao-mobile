@@ -268,7 +268,7 @@ export const balanceOfV2 = async (address) => {
   const { GofContractV2 = {at: () => {}}, chainAccount } = ctx.data;
   const ano = await GofContractV2.at(ANOcontractAddressV2);
   const ANOBalance = ano && await ano.balanceOf(chainAccount);
-  ctx.data.ANOBalanceV2 =  convertByAnoWei(ANOBalance);
+  ctx.data.ANOBalanceV2 =  convertByWei(ANOBalance);
   store.dispatch(ANOBalanceActionV2(ctx.data.ANOBalanceV2))
 };
 
@@ -277,8 +277,8 @@ export const totalStakeV2 = async (address) => {
   const { GofPoolContractV2 = {at: () => {}}, chainAccount } = ctx.data;
   const pool = await GofPoolContractV2.at(ANOPoolcontractAddressV2);
   const total = typeof pool.balanceOf === 'function' && await pool.balanceOf(chainAccount);
-  ctx.data.ANOTotalStakeV2 =  convertByAnoWei(total);
-  store.dispatch(ANOTotalStakeActionV2(ctx.data.ANOTotalStake))
+  ctx.data.ANOTotalStakeV2 =  convertByWei(total);
+  store.dispatch(ANOTotalStakeActionV2(ctx.data.ANOTotalStakeV2))
 
 };
 
