@@ -66,13 +66,17 @@ li{
 }
 .section4 .unlock-wallet{
     display: block;
-    padding:17px 63px;
+    padding: 10px 0px;
     background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     border: 2px solid #F5F5F5;
     text-align: center;
     color: #fff;
+    font-size: 16px;
+    font-family: TwCenMT-Bold, TwCenMT;
+    font-weight: bold;
+    line-height: 18px;
 }
 .border-top{
     height: 1px;

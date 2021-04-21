@@ -46,9 +46,9 @@ p{
   width: 100%;
   height: 400px;
   background-image: url('https://daostarter.oss-cn-hangzhou.aliyuncs.com/picmobile%402x.png');
-  background-position: left center;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 400px;
 }
 .upcoming-title{
   padding-left: 32px;
