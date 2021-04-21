@@ -7,10 +7,10 @@ import {NavLink} from 'react-router-dom'
 import {getProjects, getPerviousProjects } from '@/service'
 import { projectsData, perviousProjectsData } from '@/service/mock'
 
-function Home(props) {
+function Home() {
   const [upComingList, setUpComingList] = useState(projectsData)
   const [previousList, setPreviousList] = useState(perviousProjectsData)
-
+  
   useEffect(() => {
     const bg = document.getElementById('boxbg')
     bg.className = 'App app-Home'

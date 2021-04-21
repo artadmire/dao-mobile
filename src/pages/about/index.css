@@ -3,7 +3,7 @@ p{
   padding: 0;
 }
 .my-about {
-  background: #f0f2f5;
+  /* background: #f0f2f5; */
 }
 .my-about h1 {
   font-size: 24px;
@@ -50,9 +50,8 @@ p{
 .my-about .contents .desc {
   font-size: 14px;
   font-family: Poppins-Regular, Poppins;
-  font-weight: 400;
   color: #000000;
-  line-height: 21px;
+  line-height: 24px;
 }
 .my-about .contents .desc:nth-of-type(3){
   margin-bottom: 0;
@@ -93,9 +92,7 @@ p{
   margin-top: 48px;
   margin-bottom: 36px;
 }
-.myBottom.my-about-bottom .contact {
-  color: #EFBB24;
-}
+
 .myBottom.my-about-bottom .copy {
   color: #4A4A4A;
 }

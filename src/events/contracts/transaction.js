@@ -1,7 +1,7 @@
 import Config from '../../config';
 import ctx from '../index';
 import {  addPid} from './promote';
-import { convertByAnoWei, convertByEth } from '../../utils';
+import { convertByAnoWei, convertByEth, convertByAno, convertByWei } from '../../utils';
 import { store } from '../../store'
 import { ANOBalanceAction, ANOTotalStakeActionV2, isApproveActionV2, isApproveAction, totalSupplyAction, ANOBalanceActionV2, ANOTotalStakeAction, claimedOfAction } from '../../store/actions'
 
@@ -77,9 +77,8 @@ export const approve = async () => {
         from: chainAccount
       }
     );
-    return res;
+    console.log(res)
   } catch (err) {
-    // alert(err.message);
     ctx.event.emit('hideLoading');
   }
 
@@ -242,7 +241,7 @@ export const earned = async () => {
   const { GofPoolContract = {at: () => {}}, chainAccount } = ctx.data;
   const pool = await GofPoolContract.at(window.offerAddress);
   const ANOEarned = typeof pool.earned === 'function' && await pool.earned(chainAccount)
-  ctx.data.ANOEarned =   convertByAnoWei(ANOEarned);
+  ctx.data.ANOEarned = convertByWei(ANOEarned);
 };
 
 // 查看ANO余额 代币合约的balanceOf方法，也就是ppt余额
@@ -288,7 +287,7 @@ export const totalSupply = async () => {
   const { GofPoolContract = {at: () => {}}, chainAccount } = ctx.data;
   const pool = await GofPoolContract.at(window.offerAddress);
   const total = typeof pool.offeredOf === 'function' && await pool.offeredOf(chainAccount);
-  ctx.data.ANOtotalSupply =  convertByAnoWei(total);
+  ctx.data.ANOtotalSupply =  convertByWei(total);
   store.dispatch(totalSupplyAction(ctx.data.ANOtotalSupply))
 
 };
@@ -297,7 +296,7 @@ export const claimedOf = async () => {
   const { GofPoolContract = {at: () => {}}, chainAccount } = ctx.data;
   const pool = await GofPoolContract.at(window.offerAddress);
   const total = typeof pool.claimedOf === 'function' && await pool.claimedOf(chainAccount);
-  ctx.data.claimedOf =  convertByAnoWei(total);
+  ctx.data.claimedOf =  convertByWei(total);
   store.dispatch(claimedOfAction(ctx.data.claimedOf))
 
 };
@@ -307,7 +306,7 @@ export const isApprove = async () => {
   const { GofContract = {at: () => {}}, chainAccount } = ctx.data;
   const ano = await GofContract.at(window.dtokenAddress);
   const approveNum = await ano.allowance(chainAccount, window.offerAddress);
-  if (approveNum >  convertByEth(100)) {
+  if (approveNum >  convertByAno(100)) {
     ctx.data.stakeStatus = true;
   } else {
     ctx.data.stakeStatus = false;
@@ -320,7 +319,7 @@ export const isApproveV2 = async (address) => {
   const { GofContractV2 = {at: () => {}}, chainAccount } = ctx.data;
   const ano = await GofContractV2.at(ANOcontractAddressV2);
   const approveNum = await ano.allowance(chainAccount, ANOPoolcontractAddressV2);
-  if (approveNum >  convertByEth(100)) {
+  if (approveNum >  convertByAno(100)) {
     ctx.data.stakeStatusV2 = true;
   } else {
     ctx.data.stakeStatusV2 = false;

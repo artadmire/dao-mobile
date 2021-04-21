@@ -1,13 +1,20 @@
 .investor {
-    padding:40px  35px 0 20px
+    padding:40px  35px 0 20px;
+    
 }
 .investor .investor-title{
-    padding-bottom: 16px;;
+    /* padding-bottom: 16px; */
+    background: linear-gradient(to right, #3023AE, #C86DD7);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
 }
 
 .investor .investor-content{
-    background: #131517;
     border-radius: 20px;
+    background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
 }
 
 .investor .investor-item{
@@ -16,7 +23,6 @@
      align-items: center;
      padding:21px 42px 21px 21px;
      border-radius: 7px;
-   
      margin-bottom: 16px;
 }
 .investor .investor-item img{

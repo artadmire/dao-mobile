@@ -2,9 +2,10 @@ import React from 'react'
 import './upComingProjectItem.css'
 export default function upComingProjectItem(props) {
     const {data} = props
+    console.log(data)
     return (
         <a href={data.url ? data.url : 'javascript:;'} className="up-coming-project-item">
-             <img src={data.logo}/>
+             <img src={data.logo} alt=''/>
             <div className="details">
             {data.isOpen == 1 && <p>Starts: in {data.days} day（s）/ Whitelist Closed</p>}
             {data.isOpen == 2 && <p>Whitelist open - <a href='javascript:;'>Register Now</a></p>}

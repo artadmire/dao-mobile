@@ -1,3 +1,18 @@
-.header {
-  
+.header p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+
+}
+.header p span {
+  font-size: 20px;
+  font-family: TwCenMT-Bold, TwCenMT;
+  font-weight: bold;
+  color: #000000;
+  line-height: 20px;
+}
+.header p img {
+  margin-right: 4px;
+  width: 16px;
+  height: 21px;
 }

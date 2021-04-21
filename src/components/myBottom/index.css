@@ -22,8 +22,7 @@ display: block;
   display: flex;
 }
 .icon a{
-  width: 40px;
-  height: 40px;
+
   display: flex;
   margin-right: 10px;
   border-radius: 20px;
@@ -33,8 +32,8 @@ display: block;
   background: #FFFFFF;
 }
 .icon a img{
-  width: 40px;
-  height: 34px;
+  width: 23px;
+  height: 19px;
 }
 .myBottom .contact{
   font-size: 18px;

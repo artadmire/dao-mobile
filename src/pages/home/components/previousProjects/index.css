@@ -1,6 +1,6 @@
 .previous-projects{
     padding:24px 25px 0;
-    background: #eaebf2;
+    background: rgba(180, 110, 200, 0.1)
 }
 .previous-projects-title{
     display: flex;
@@ -21,8 +21,13 @@
 }
 .show-all{
     display: block;
-    padding:0 0 40px;
+    padding: 20px 0 30px;
     text-align: center;
+    color: black;
+}
+.show-all img {
+    width: 16px;
+    height:  16px;
 }
 .main-title{
     background: linear-gradient(to right, #3023AE, #C86DD7);

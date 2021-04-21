@@ -10,7 +10,6 @@ import moment from 'moment'
 import {  approve, offer, claim} from '@/events/contracts/transaction'
 import {connect} from 'react-redux'
 import ctx from '@/events';
-import {convertByWei} from '@/utils/number'
 
 function Parameter (props) {
   const [data, setData] = useState({})
@@ -99,6 +98,8 @@ function Parameter (props) {
 
   }
   const pre = data.endDate * 1 - data.startDate * 1
+  const now = new Date().valueOf()
+  const percent = now / pre * 100
   return (
     <div className="my-parameter">
       <div className="parameter-content">
@@ -193,9 +194,7 @@ function Parameter (props) {
                     pre > 0 ? <span>{moment(data.endDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span> : <span>Finished</span>
                   }
                 </div>
-                <div className="dates-detail-process">
-
-                </div>
+                <div className="dates-detail-process" style={{width: percent}}></div>
               </div>
             </div>
         
@@ -203,7 +202,7 @@ function Parameter (props) {
           <div className="parameter-detail-bottom">
             <div className="deposited-availale">
               <div className="title">
-                       YOU HAVE <span>0</span> USDC DEPOSITED from <span>0 </span>available for your TIER
+                       YOU HAVE <span>{totalSupply / (data.ratio || 1) || 0}</span> USDC DEPOSITED from <span>{balance || 0} </span>available for your TIER
               </div>
               <div className="cont">
                 <div className="cont-first">
@@ -211,11 +210,11 @@ function Parameter (props) {
                                       INPUT
                   </span>
                   <span>
-                                 Your Wallet Balance: <label>0</label>
+                                 Your Wallet Balance: <label>{balance || 0}</label>
                   </span>
                 </div>
                 <div className="cont-last">
-                       <input placeholder="0.0"/>
+                       <input onInput={changeValue} placeholder="0.0"/>
                   <div>
                     <span>
                          Max
@@ -226,19 +225,15 @@ function Parameter (props) {
                 </div>
               </div>
               <div className="sum">
-                <div>
-                             + 0% Fee: 0 USDC
-                </div>
-                <div>
-                             TOTAL: 0 USDC
-                </div>
+              <div>{totalSupply / (data.ratio || 1)} Deposited</div>
+                <div>TOTAL: {balance || 0} USDC</div>
               </div>
               <div className="handler">
-                <span>
-                            approve
+                <span  onClick={handleApprove} >
+                  approve
                 </span>
-                <span>
-                            Deposit
+                <span onClick={handleDeposit}>
+                   Deposit
                 </span>
               </div>
             </div>
@@ -247,49 +242,33 @@ function Parameter (props) {
                         Reward tokens will be available to harvest in approx.
               </div>
               <ul className="cont">
-                <li>
-                  <span>
-                                DAYS
-                  </span>
-                  <span>
-                                00
-                  </span>
+              <li>
+                  <span>DAYS</span>
+                  <span>{days}</span>
                 </li>
                 <li>
-                  <span>
-                                DAYS
-                  </span>
-                  <span>
-                                00
-                  </span>
+                  <span>HOURS</span>
+                  <span>{hours}</span>
                 </li>
                 <li>
-                  <span>
-                                DAYS
-                  </span>
-                  <span>
-                                00
-                  </span>
+                  <span>MINUTES</span>
+                  <span>{minutes}</span>
                 </li>
                 <li>
-                  <span>
-                                DAYS
-                  </span>
-                  <span>
-                                00
-                  </span>
+                  <span>SECONDS</span>
+                  <span>{seconds}</span>
                 </li>
               </ul>
               <div className="sum">
                 <div>
-                             Reward (0 while calculating)
+                    Reward ({claimed} while calculating)
                 </div>
                 <div>
-                             0 EBOX Token
+                  {data.totalRewards || 0} EBOX Token
                 </div>
               </div>
-              <div className="handler">
-                            approve
+              <div onClick={handleHarvest} className="handler">
+              Harvest
               </div>
             </div>
           </div>

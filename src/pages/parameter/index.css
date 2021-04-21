@@ -6,7 +6,8 @@ p{
     width:100%;
     padding-left: 32px;
     padding-top: 33px;
-    background: #f0f2f5;
+    background: #fff;
+    /* background: #f0f2f5; */
   }
   .level{
     font-size: 11px;

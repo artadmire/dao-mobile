@@ -1,6 +1,8 @@
 import React from 'react'
 import whiteMenu from '@/assets/img/menu@2x2.png'
 import close from '@/assets/img/delete2.png'
+import imgURL from '@/assets/img/logo3x.png';
+import './index.css'
 import {  withRouter } from 'react-router-dom'
 
  function Header(props) {
@@ -16,8 +18,8 @@ import {  withRouter } from 'react-router-dom'
     history.push('/')
   }
     return (
-        <header style={{background: '#fff'}} className="header">
-          <h2 onClick={goHome}><span>D</span><span>DAOStarter</span></h2>
+        <header  className="header">
+          <p onClick={goHome}><img src={imgURL}/><span>DAOStarter</span></p>
           <span className="unlock-wallet">Unlock Wallet</span>
           {showMenu ? <img onClick={hideMenu} src={close}/>
           : <img onClick={showMenus} src={whiteMenu}/>}
