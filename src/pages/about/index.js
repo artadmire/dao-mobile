@@ -12,8 +12,6 @@ function About() {
         <div>
           <p className="desc">
           DAOStarter is a public token launchpad, serving for crypto inveestors & projects.
-          </p>
-          <p className="desc">
           DAOStarter is deployed on BSC, Ethereum and HECO, and cross-chain bridge will be developed to swap assets between different chains.
           </p>
           <p className="desc">
