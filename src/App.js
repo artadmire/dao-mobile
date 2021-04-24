@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './reset.css'
 import './App.css';
 import Header from './components/header/index.js'
@@ -11,11 +11,24 @@ import Parameter from  './pages/parameter'
 import PreviousList from  './pages/previous/index'
 import 'antd/dist/antd.css';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
+import ctx from './events';
+import './events/ethereum';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   function changeShow(value) {
     setShowMenu(value)
+  }
+  useEffect(() => {
+    connectWallet()
+  }, [])
+
+  const connectWallet = () => {
+    const { chainAccount } = ctx.data;
+    if (chainAccount) {
+      return;
+    }
+    ctx.event.emit('connectWallet');
   }
   return (
     <div className="App" id="boxbg">

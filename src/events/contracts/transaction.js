@@ -268,7 +268,7 @@ export const balanceOfV2 = async (address) => {
   const { GofContractV2 = {at: () => {}}, chainAccount } = ctx.data;
   const ano = await GofContractV2.at(ANOcontractAddressV2);
   const ANOBalance = ano && await ano.balanceOf(chainAccount);
-  ctx.data.ANOBalanceV2 =  convertByWei(ANOBalance);
+  ctx.data.ANOBalanceV2 =  convertByAnoWei(ANOBalance);
   store.dispatch(ANOBalanceActionV2(ctx.data.ANOBalanceV2))
 };
 

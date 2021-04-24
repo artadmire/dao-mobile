@@ -4,17 +4,19 @@ import PreviousProjectItem from '../home/components/previousProjects/previousPro
 import MyBottom from '../../components/myBottom'
 import { getPerviousProjects} from '@/service'
 import { perviousProjectsData} from '@/service/mock'
+import {connect} from 'react-redux'
 
-export default function PreviousList() {
-    let [list, setList]  = useState(perviousProjectsData)
+function PreviousList(props) {
+    let [list, setList]  = useState([])
+    const {chainId} = props;
 
     useEffect(async () => {
       fetchData()
-    }, [])
+    }, [chainId])
   
     async function fetchData () {
       try {
-        let res = await getPerviousProjects();
+        let res = await getPerviousProjects({chainID: chainId});
         res = res.data;
         if (!res || !res.data || !res.data.data ||  !res.data.data.length) {throw new Error('')}
         setList(res.data.data)
@@ -35,3 +37,6 @@ export default function PreviousList() {
 
     )
 }
+
+export default connect(({chainId}) => ({chainId}))(PreviousList);
+

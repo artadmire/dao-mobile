@@ -5,11 +5,12 @@ import UpcomingProject from './components/upcomingProjects/index.js'
 import PreviousProject from './components/previousProjects/index.js'
 import {NavLink} from 'react-router-dom'
 import {getProjects, getPerviousProjects } from '@/service'
-import { projectsData, perviousProjectsData } from '@/service/mock'
+// import { projectsData, perviousProjectsData } from '@/service/mock'
+import {connect} from 'react-redux'
 
-function Home() {
-  const [upComingList, setUpComingList] = useState(projectsData)
-  const [previousList, setPreviousList] = useState(perviousProjectsData)
+function Home(props) {
+  const [upComingList, setUpComingList] = useState([])
+  const [previousList, setPreviousList] = useState([])
   
   useEffect(() => {
     const bg = document.getElementById('boxbg')
@@ -40,7 +41,7 @@ function Home() {
 
   async function fetchPervious () {
     try {
-      let res = await getPerviousProjects();
+      let res = await getPerviousProjects({chainID: props.chainId});
       res = res.data
       if (!res || !res.data ||  !res.data.data || !res.data.data.length) {throw new Error('')}
       setPreviousList(res.data.data)
@@ -75,4 +76,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default connect(({chainId}) => ({chainId}))(Home);

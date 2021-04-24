@@ -25,7 +25,7 @@ function MyModal (props) {
               </span>
             </div>
             <div className="cont-last">
-              <input onInput={handleChange} placeholder="0.0"/>
+              <input value={props.value} onInput={handleChange} placeholder="0.0"/>
               <div>
                 <span>
                                           Max

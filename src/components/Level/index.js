@@ -29,10 +29,10 @@ export default function Level (props) {
       </div>
       <ul className="level-bottom">
         <li>START</li>
-        <li>BRONZE</li>
-        <li>SLIVER</li>
-        <li>GOLD</li>
-        <li>PLATINUM</li>
+        <li>EXPERIENCED</li>
+        <li>OLD-BIRD</li>
+        <li>EXPERT</li>
+        <li>WEALTH</li>
       </ul>
     </div>
   )

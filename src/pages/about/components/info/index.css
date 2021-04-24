@@ -15,6 +15,7 @@
     height:70px;
 }
 .info .info-item p{
-    width:88px;
+    width: 88px;
+    font-size: 16px;
     color: black;
 }

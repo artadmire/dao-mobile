@@ -9,6 +9,7 @@ import { getLockin } from '@/service'
 import {store} from '@/store'
 import { approveV2, stakeV2, withdrawV2} from '@/events/contracts/transaction'
 import ctx from '../../events';
+import LevelMap from '@/components/LevelMap'
 
 
 // const _data = {
@@ -35,8 +36,6 @@ function Account (props) {
 
   function handleChange (val) {
     setValue(val)
-    console.log(val)
-
   }
 
   const hideModal = useCallback(() => {
@@ -109,7 +108,7 @@ function Account (props) {
   return (
     <div className="account">
       <div className="account-content">
-        <div  className="account-wallet">
+        {/* <div  className="account-wallet">
           <div className="wallet">
             <label>
                     Your Wallet :
@@ -118,11 +117,9 @@ function Account (props) {
               {account}
             </span>
           </div>
-          {
-            data && data.kyc ? null : <div className="verified">
-            Some pools may requre you to be KYC verified <span>KYC for DAOStarter projects</span>
-            </div>
-          }
+          <div className="account-level">
+            <Level level={data.userLv}/>
+          </div>
           <div className="daos-count">
             <img src={wallet}/>
             <div>
@@ -130,9 +127,13 @@ function Account (props) {
             </div>
           </div>
         </div>
-        <div className="account-level">
-          <Level level={data.userLv}/>
-        </div>
+         */}
+        <LevelMap  ANOTotalStakeAccount={ANOTotalStakeAccount} balance={balance} account={account} level={data.userLv}/>
+        {
+          data && data.kyc ? null : <div className="verified">
+          Some pools may requre you to be KYC verified <span>KYC for DAOStarter projects</span>
+          </div>
+        }
         <div className="available-balance">
           <div className="balance">
                    Available balance: <span>{ANOTotalStakeAccount || 0}</span>
@@ -217,7 +218,7 @@ function Account (props) {
                     last deposit
                     </span>
                     <span>
-                    0 day(s) ago
+                    {data.lastDeposit} day(s) ago
                     </span>
                   </li>
                 </ul>
@@ -234,6 +235,7 @@ function Account (props) {
         left={modalLeftBun}
         balance={balance}
         account={account}
+        value={value}
         ANOTotalStakeAccount={ANOTotalStakeAccount}
         onChange={handleChange}
       />}
