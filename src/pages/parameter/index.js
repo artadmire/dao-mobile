@@ -67,7 +67,7 @@ function Parameter (props) {
       const res = await getDeposit({account});
       if (!res || !res.data || !res.data.data) {throw new Error('')}
       const data = res.data.data
-      data.hasRoot = true
+      // data.hasRoot = true
       setData(data)
       setLeftTime(data.harvestDate)
     } catch (error) {
