@@ -4,7 +4,7 @@ import './index.css'
 import arrow from '../../../../assets/img/arrow@2x.png'
 import {Link}  from 'react-router-dom'
 export default function PreviousProject(props) {
-    const {list} = props
+    const {list, account} = props
     return (
         <div className="previous-projects">
          <div className="main-title">
@@ -12,7 +12,7 @@ export default function PreviousProject(props) {
          </div>
          <div className="previous-projects-content">
                 {
-                   list.length && list.map((item,index)=>  <PreviousProjectItem key={index} data={item} styles={{"marginRight":"0"}}/>)
+                   list.length && list.map((item,index)=>  <PreviousProjectItem account={account} key={index} data={item} styles={{"marginRight":"0"}}/>)
                 }
          </div>
          <Link className="show-all" to="/project-list">

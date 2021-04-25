@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
 function Home(props) {
   const [upComingList, setUpComingList] = useState([])
   const [previousList, setPreviousList] = useState([])
-  
+  const {account} = props
   useEffect(() => {
     const bg = document.getElementById('boxbg')
     bg.className = 'App app-Home'
@@ -60,7 +60,7 @@ function Home(props) {
         <div className="main-title upcoming-title">Upcoming Projects</div>
       </div>
       {upComingList && upComingList.length ? <UpcomingProject list={upComingList} /> : null}
-      {previousList && previousList.length ? <PreviousProject list={previousList} /> : null}
+      {previousList && previousList.length ? <PreviousProject  account={account} list={previousList} /> : null}
        <div className="user-applay">
          {/* <img src=''  style={{width:"112px",height:"24px",background:"red"}}/> */}
         <div className="title">
@@ -76,4 +76,4 @@ function Home(props) {
   );
 }
 
-export default connect(({chainId}) => ({chainId}))(Home);
+export default connect(({chainId, account}) => ({chainId, account}))(Home);
