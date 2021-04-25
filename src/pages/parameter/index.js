@@ -86,7 +86,7 @@ function Parameter (props) {
 
   // 质押
   async function handleDeposit () {
-    if (!_approve || !data.hasRoot)  {return}
+    if (!_approve || !data.hasRoot || data.deposited > 0)  {return}
     await offer(value);
     updateAccount()
     fetchData(account)
@@ -291,7 +291,7 @@ function Parameter (props) {
                   {data.totalRewards || 0} EBOX Token
                 </div> */}
               </div>
-              <div className={`harvest ${(leftTime <= 0 && data.hasRoot) ? 'active' : ''}`}  onClick={handleHarvest} className="handler">
+              <div className={`handler harvest ${leftTime <= 0 && data.hasRoot ? 'active' : ''}`}  onClick={handleHarvest}>
               Harvest
               </div>
             </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import './upComingProjectItem.css'
 export default function upComingProjectItem(props) {
     const {data} = props
-    console.log(data)
     return (
         <a href={data.url ? data.url : 'javascript:;'} className="up-coming-project-item">
              <img src={data.logo} alt=''/>
