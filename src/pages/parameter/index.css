@@ -2,14 +2,14 @@ p{
     margin:0;
     padding: 0;
 }
-.parameter-content{
-    width:100%;
-    padding-left: 32px;
-    padding-top: 33px;
+.my-parameter {
+  padding: 0 32px;
+}
+  .parameter-content{
+    margin-top: 32px;
     background: #fff;
-    /* background: #f0f2f5; */
   }
-  .level{
+  /* .level{
     font-size: 11px;
     font-family: Poppins-Medium, Poppins;
     font-weight: 500;
@@ -41,17 +41,15 @@ p{
 .level>div span:nth-of-type(4){
       margin-left: 44px;
       margin-right: 8px;
-}
-  .parameter-detail{
+} */
+.parameter-detail{
     margin-top:24px;
-  
   }
   
   .parameter-detail-top{
       display: flex;
       margin-bottom: 40px;
      flex-direction: column;
-     padding-right:37px ;
   }
   .deposited{
      
@@ -111,13 +109,7 @@ p{
     color: #000000;
     line-height: 17px;
   }
-  .dates-detail-process{
-    height: 34px;
-    background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
-    border-radius: 12px;
-    border: 2px solid #4A4A4A;
-    margin-top: 16px;
-  }
+
   .ethbox-details{
     padding:24px 32px;
   background: #FFFFFF;
@@ -163,10 +155,26 @@ p{
     margin:0;
 
   }
+  .wrap-dates-detail-process {
+    height: 46px;
+    border: 3px solid #3023AE;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+  
+  }
+  .dates-detail-process{
+    height: 40px;
+    background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
+    border-radius: 17px 0 0 17px;
+    position: absolute;
+    top: 0px;
+    left:0px;
+  }
   .parameter-detail-bottom{
     display: flex;
     flex-direction: column;
-    padding-right: 32px;
   }
   .parameter-detail-bottom>div{
     padding:24px;
@@ -223,6 +231,7 @@ p{
   .reward-tokens{
   }
   .reward-tokens .cont{
+    font-size: 11px;
     display: flex;
     justify-content: space-around;
     padding:12px 0;
@@ -233,8 +242,8 @@ p{
     justify-content: center;
     align-items: center;
   }
-  .reward-tokens .cont li span:nth-of-type(1){
-    margin-bottom: 25px;
+  .reward-tokens .cont span {
+    line-height: 30px;
   }
   .reward-tokens .sum{
     display: flex;
@@ -321,6 +330,7 @@ p{
       font-weight: 400;
       color: #4A4A4A;
       line-height: 13px;
+      margin-right: 5px;
   }
 
   .deposited-availale .cont-last img{
@@ -331,5 +341,14 @@ p{
   }
   .parameter-bottom{
       padding: 56px 0;
-      background: #f0f2f5;
+      /* background: #f0f2f5; */
+      background: #FFF;
   }
+  /* \background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%); */
+  .deposited-availale .handler .active {
+    background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
+  }
+  .reward-tokens .harvest.active {
+    background: linear-gradient(135deg, #3023AE 0%, #C86DD7 100%);
+  }
+  

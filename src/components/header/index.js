@@ -4,9 +4,10 @@ import close from '@/assets/img/delete2.png'
 import imgURL from '@/assets/img/logo3x.png';
 import './index.css'
 import {  withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
 
  function Header(props) {
-  const {history, onChange, showMenu} = props;
+  const {history, onChange, showMenu, account} = props;
   
   function showMenus() {
     typeof onChange === 'function' && onChange(true)
@@ -20,11 +21,11 @@ import {  withRouter } from 'react-router-dom'
     return (
         <header  className="header">
           <p onClick={goHome}><img src={imgURL}/><span>DAOStarter</span></p>
-          <span className="unlock-wallet">Unlock Wallet</span>
+          <span className="unlock-wallet">{account || 'Unlock Wallet'}</span>
           {showMenu ? <img onClick={hideMenu} src={close}/>
           : <img onClick={showMenus} src={whiteMenu}/>}
         </header>
     )
 }
 
-export default  withRouter(Header)
+export default  connect(({account}) => ({account}))(withRouter(Header))

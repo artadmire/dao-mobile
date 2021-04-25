@@ -10,6 +10,7 @@ import {store} from '@/store'
 import { approveV2, stakeV2, withdrawV2} from '@/events/contracts/transaction'
 import ctx from '../../events';
 import LevelMap from '@/components/LevelMap'
+import {updateAccount} from '../../events/contracts/accounts'
 
 
 // const _data = {
@@ -68,15 +69,20 @@ function Account (props) {
     const res = await approveV2();
     // console.log(res)
     res && store.dispatch({type: 'ISAPPROVEV2', payload: true})
-
+    updateAccount()
+    fetchData()
   }
   // 质押
   async function handleDeposit () {
     await stakeV2(value);
+    updateAccount()
+    fetchData()
   }
   // 提取本金
   async function handleWithDraw () {
     await withdrawV2(value);
+    updateAccount()
+    fetchData()
   }
 
   const lockIn = useCallback(() => {
@@ -129,9 +135,11 @@ function Account (props) {
         </div>
          */}
         <LevelMap  ANOTotalStakeAccount={ANOTotalStakeAccount} balance={balance} account={account} level={data.userLv}/>
+        {/* data && data.kyc ? null :  */}
         {
-          data && data.kyc ? null : <div className="verified">
-          Some pools may requre you to be KYC verified <span>KYC for DAOStarter projects</span>
+          <div className="verified">
+          Some pools may requre you to be KYC verified 
+          <div>KYC for DAOStarter projects</div>
           </div>
         }
         <div className="available-balance">
@@ -238,6 +246,8 @@ function Account (props) {
         value={value}
         ANOTotalStakeAccount={ANOTotalStakeAccount}
         onChange={handleChange}
+        ANOTotalStakeAccount={data.ANOTotalStakeAccount}
+        showMaxValue={handleChange}
       />}
     </div>
   )

@@ -62,7 +62,7 @@ function Home(props) {
       {upComingList && upComingList.length ? <UpcomingProject list={upComingList} /> : null}
       {previousList && previousList.length ? <PreviousProject list={previousList} /> : null}
        <div className="user-applay">
-         <img src=''  style={{width:"112px",height:"24px",background:"red"}}/>
+         {/* <img src=''  style={{width:"112px",height:"24px",background:"red"}}/> */}
         <div className="title">
           Start your dream on
         </div>

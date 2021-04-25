@@ -12,7 +12,7 @@ function myBottom(props) {
   const { className = ''} = props
   return (
     <div className={`myBottom ${className}`}>
-      <p className="terms-privacy"><a className="terms">Terms</a><a>Privacy</a></p>
+      <p className="terms-privacy"><a href="javascript:;" className="terms">Terms</a><a  href="javascript:;">Privacy</a></p>
       <div className="icon">
         <a href="javascript:;"><img src={imgURL1} /></a>
         <a href="javascript:;" ><img src={imgURL2}/></a>

@@ -13,28 +13,27 @@
 
 }
 .wrap-levelMap-top img {
-  width: 78px;
-  height: 91px;
+  width: 50px;
+  height: 60px;
   margin-right: 20px;
   margin-bottom: 10px;
 }
 .wrap-levelMap-top .title {
-  font-size: 20px;
+  font-size: 14px;
   font-family: Poppins-Bold, Poppins;
   font-weight: bold;
   color: #000000;
   line-height: 30px;
 }
 .wrap-levelMap-top .left {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  margin-right: 10px;
 }
 .wrap-levelMap-top .right {
   display: flex;
   flex-direction: column;
-  width: 50%;
-
+  width: 65%;
 }
 .wrap-levelMap-top .right .wallet {
   box-sizing: border-box;

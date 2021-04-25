@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
-import Level from '../../components/Level'
+import LevelMapP from '../../components/LevelMapP'
 import bronze from '../../assets/img/bronze@2x.png'
 import './index.css'
 import { store } from '@/store'
@@ -10,6 +10,7 @@ import moment from 'moment'
 import {  approve, offer, claim} from '@/events/contracts/transaction'
 import {connect} from 'react-redux'
 import ctx from '@/events';
+import {updateAccount} from '../../events/contracts/accounts'
 
 function Parameter (props) {
   const [data, setData] = useState({})
@@ -20,6 +21,7 @@ function Parameter (props) {
   const [seconds, setSeconds] = useState('00')
   const [value, setValue] = useState(0)
 
+
   const { isApprove: _approve, account, balances = 0,
     totalSupply = 0, claimed = 0 } = props
   const balance = ((balances || 0) / 10000000000).toFixed(4) || 0
@@ -27,6 +29,10 @@ function Parameter (props) {
   useEffect(() => {
     // 初始化区块链库
     ctx.event.emit('initEthereum');
+    return () => {
+      window.offerAddress = ''
+      window.dtokenAddress = ''
+    }
   }, []);
 
   useEffect(() => {
@@ -34,7 +40,7 @@ function Parameter (props) {
       getTimes()
     }, 1000)
 
-    if (setLeftTime < 0) {
+    if (leftTime <= 0) {
       clearInterval(timer)
       timer = null
     }
@@ -46,11 +52,13 @@ function Parameter (props) {
 
   useEffect(async () => {
     account && fetchData(account)
-  }, [account])
+  }, [account, _approve])
 
+  function showMaxValue () {
+    setValue(data.maxDepositAvailable)
+  }
   function changeValue (e) {
     setValue(e.target.value)
-    console.log(ctx.data)
 
   }
 
@@ -58,8 +66,10 @@ function Parameter (props) {
     try {
       const res = await getDeposit({account});
       if (!res || !res.data || !res.data.data) {throw new Error('')}
-      setData(res.data.data)
-      setLeftTime(res.data.data.harvestDate)
+      const data = res.data.data
+      data.hasRoot = true
+      setData(data)
+      setLeftTime(data.harvestDate)
     } catch (error) {
       setData({})
     }
@@ -67,21 +77,27 @@ function Parameter (props) {
 
   // 授权
   async function handleApprove () {
-    // if (_approve)  {return}
+    if (_approve || !data.hasRoot) {return}
     const res = await approve();
     res && store.dispatch({type: 'ISAPPROVE', payload: true})
+    updateAccount()
+    fetchData(account)
   }
 
   // 质押
   async function handleDeposit () {
-    if (!_approve || leftTime > 0)  {return}
+    if (!_approve || !data.hasRoot)  {return}
     await offer(value);
+    updateAccount()
+    fetchData(account)
   }
 
   // harvest操作
   async function handleHarvest () {
-    if (leftTime > 0) {return}
+    if (leftTime > 0 || !data.hasRoot) {return}
     claim(value)
+    updateAccount()
+    fetchData(account)
   }
   function getTimes () {
     const _leftTime = leftTime - 1000
@@ -97,13 +113,19 @@ function Parameter (props) {
     setSeconds(_seconds)
 
   }
-  const pre = data.endDate * 1 - data.startDate * 1
   const now = new Date().valueOf()
-  const percent = now / pre * 100
+  const perid =  (data.endDate * 1 - data.startDate * 1) || 0
+  const diff = data.endDate * 1 - now
+  const past = now - data.startDate * 1
+  let percent = past / perid
+  if(diff <=0 ) {
+    percent = 1
+  }
+  
   return (
     <div className="my-parameter">
       <div className="parameter-content">
-        <Level level={data.level || 0} />
+        <LevelMapP level={data.level || 0} />
         <div className="parameter-detail">
           <div className="parameter-detail-top">
           <div className="ethbox-details">
@@ -191,10 +213,12 @@ function Parameter (props) {
                 <div className="dates-detail-time">
                   <span>{moment(data.startDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span>
                   {
-                    pre > 0 ? <span>{moment(data.endDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span> : <span>Finished</span>
+                    diff > 0 ? <span>{moment(data.endDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span> : <span>Finished</span>
                   }
                 </div>
-                <div className="dates-detail-process" style={{width: percent}}></div>
+                <div className="wrap-dates-detail-process">
+                  <div className="dates-detail-process " style={{width:  `${percent * 100}%` }}></div>
+                </div>
               </div>
             </div>
         
@@ -202,7 +226,7 @@ function Parameter (props) {
           <div className="parameter-detail-bottom">
             <div className="deposited-availale">
               <div className="title">
-                       YOU HAVE <span>{totalSupply / (data.ratio || 1) || 0}</span> USDC DEPOSITED from <span>{balance || 0} </span>available for your TIER
+                       YOU HAVE <span>{totalSupply / (data.ratio || 1) || 0}</span> {data.depositToken} DEPOSITED from <span>{balance || 0} </span>available for your TIER
               </div>
               <div className="cont">
                 <div className="cont-first">
@@ -214,25 +238,25 @@ function Parameter (props) {
                   </span>
                 </div>
                 <div className="cont-last">
-                       <input onInput={changeValue} placeholder="0.0"/>
+                       <input value={value} onInput={changeValue} placeholder="0.0"/>
                   <div>
-                    <span>
-                         Max
+                    <span onClick={showMaxValue}>
+                         Max 
                     </span>
-                    <img src={bronze}/>
-                    USDC
+                    {/* <img src={bronze}/> */}
+                    {data.depositToken}
                   </div>
                 </div>
               </div>
               <div className="sum">
               <div>{totalSupply / (data.ratio || 1)} Deposited</div>
-                <div>TOTAL: {balance || 0} USDC</div>
+                <div>TOTAL: {balance || 0} {data.depositToken}</div>
               </div>
               <div className="handler">
-                <span  onClick={handleApprove} >
+                <span className={(!_approve && data.hasRoot) ? 'active' : ''} onClick={handleApprove} >
                   approve
                 </span>
-                <span onClick={handleDeposit}>
+                <span className={(_approve && data.hasRoot && !data.deposited) ? 'active' : ''} onClick={handleDeposit}>
                    Deposit
                 </span>
               </div>
@@ -263,11 +287,11 @@ function Parameter (props) {
                 <div>
                     Reward ({claimed} while calculating)
                 </div>
-                <div>
+                {/* <div>
                   {data.totalRewards || 0} EBOX Token
-                </div>
+                </div> */}
               </div>
-              <div onClick={handleHarvest} className="handler">
+              <div className={`harvest ${(leftTime <= 0 && data.hasRoot) ? 'active' : ''}`}  onClick={handleHarvest} className="handler">
               Harvest
               </div>
             </div>
