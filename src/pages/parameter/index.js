@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
-import LevelMapP from '../../components/LevelMapP'
+import Level from '../../components/LevelMapP'
 import bronze from '../../assets/img/bronze@2x.png'
 import './index.css'
 import { store } from '@/store'
@@ -125,7 +125,7 @@ function Parameter (props) {
   return (
     <div className="my-parameter">
       <div className="parameter-content">
-        <LevelMapP level={data.level || 0} />
+        <Level level={data.level || 0} />
         <div className="parameter-detail">
           <div className="parameter-detail-top">
           <div className="ethbox-details">

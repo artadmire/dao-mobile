@@ -5,6 +5,7 @@ import UpcomingProject from './components/upcomingProjects/index.js'
 import PreviousProject from './components/previousProjects/index.js'
 import {NavLink} from 'react-router-dom'
 import {getProjects, getPerviousProjects } from '@/service'
+import aa from '@/assets/img/编组12@2x.png'
 // import { projectsData, perviousProjectsData } from '@/service/mock'
 import {connect} from 'react-redux'
 
@@ -62,7 +63,7 @@ function Home(props) {
       {upComingList && upComingList.length ? <UpcomingProject list={upComingList} /> : null}
       {previousList && previousList.length ? <PreviousProject  account={account} list={previousList} /> : null}
        <div className="user-applay">
-         {/* <img src=''  style={{width:"112px",height:"24px",background:"red"}}/> */}
+         <img src={aa}  style={{width:"83px",height:"25px"}}/>
         <div className="title">
           Start your dream on
         </div>

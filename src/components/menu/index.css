@@ -27,3 +27,15 @@
   font-size: 20px;
  
 }
+
+.menu-span{
+  margin-right: 20px;
+  border-radius: 3px;
+  padding: 0px 15px;
+  line-height: 28px;
+  font-size: 16px;
+  font-family: TwCenMT-Bold, TwCenMT;
+  font-weight: bold;
+  color: #B2B7CC;
+  border: 1px solid #B2B7CC;
+}

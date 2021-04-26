@@ -14,11 +14,11 @@ function myBottom(props) {
     <div className={`myBottom ${className}`}>
       <p className="terms-privacy"><a href="javascript:;" className="terms">Terms</a><a  href="javascript:;">Privacy</a></p>
       <div className="icon">
-        <a href="javascript:;"><img src={imgURL1} /></a>
-        <a href="javascript:;" ><img src={imgURL2}/></a>
-        <a href="javascript:;"><img src={imgURL3}/></a>
-        <a href="javascript:;"><img src={imgURL4}/></a>
-        <a href="javascript:;"><img src={imgURL5}/></a>
+        <a href="https://twitter.com/DaoStarter"><img src={imgURL1} /></a>
+        {/* <a href="javascript:;" ><img src={imgURL2}/></a> */}
+        <a href="https://medium.com/@DaoStarter"><img src={imgURL3}/></a>
+        <a href="https://t.me/DaoStarter"><img src={imgURL4}/></a>
+        <a href="javascript:;" title="support@daostarter.pro"><img src={imgURL5}/></a>
       </div>
       <p className="contact"><img src={imgURL} style={{width:"16px",height:"16px"}}/>DAOStarter</p>
       <p className="copy">©2021 DAOStarter. All rights reserved.</p>
