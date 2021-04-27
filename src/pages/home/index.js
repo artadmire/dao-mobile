@@ -2,17 +2,19 @@ import React, {useEffect, useState} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
 import UpcomingProject from './components/upcomingProjects/index.js'
-import PreviousProject from './components/previousProjects/index.js'
+import InProject from './components/inProjects/index.js'
 import {NavLink} from 'react-router-dom'
 import {getProjects, getPerviousProjects } from '@/service'
 import aa from '@/assets/img/编组12@2x.png'
 // import { projectsData, perviousProjectsData } from '@/service/mock'
 import {connect} from 'react-redux'
+import OverProjects from './components/overProjects/index.js'
 
 function Home(props) {
   const [upComingList, setUpComingList] = useState([])
+  const [inProgressList, setInProgressList] = useState([])
   const [previousList, setPreviousList] = useState([])
-  const {account} = props
+  const {account, chainId} = props
   useEffect(() => {
     const bg = document.getElementById('boxbg')
     bg.className = 'App app-Home'
@@ -40,14 +42,18 @@ function Home(props) {
     }
   }
 
+  // 以前和进行中
   async function fetchPervious () {
     try {
-      let res = await getPerviousProjects({chainID: props.chainId});
+      let res = await getPerviousProjects({chainID: chainId});
       res = res.data
-      if (!res || !res.data ||  !res.data.data || !res.data.data.length) {throw new Error('')}
-      setPreviousList(res.data.data)
+      if (!res || !res.data) {throw new Error('')}
+      setPreviousList(res.data.over)
+      setInProgressList(res.data.open)
     } catch (error) {
       setPreviousList([])
+      setInProgressList([])
+
     }
   }
   return (
@@ -61,7 +67,8 @@ function Home(props) {
         <div className="main-title upcoming-title">Upcoming Projects</div>
       </div>
       {upComingList && upComingList.length ? <UpcomingProject list={upComingList} /> : null}
-      {previousList && previousList.length ? <PreviousProject  account={account} list={previousList} /> : null}
+      {inProgressList && inProgressList.length ? <InProject list={inProgressList} account={account} /> : null}
+      {previousList && previousList.length ? <OverProjects  account={account} list={previousList} /> : null}
        <div className="user-applay">
          <img src={aa}  style={{width:"83px",height:"25px"}}/>
         <div className="title">

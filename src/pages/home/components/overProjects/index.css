@@ -1,0 +1,42 @@
+.previous-projects{
+    padding:24px 25px 0;
+    background: rgba(180, 110, 200, 0.1)
+}
+.previous-projects-title{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
+    color: #4A4A4A;
+    line-height: 20px;
+    padding-top: 48px;
+}
+.previous-projects-title img{
+    width:16px;
+    height: 16px;
+}
+.previous-projects-content{
+    margin-top:48px;
+}
+.show-all{
+    display: block;
+    padding: 20px 0 30px;
+    text-align: center;
+    color: black;
+}
+.show-all img {
+    width: 16px;
+    height:  16px;
+}
+.main-title{
+    background: linear-gradient(to right, #3023AE, #C86DD7);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 800;
+    line-height:30px;
+  }
+  .previous-projects a{
+      display: inline-block;
+  }

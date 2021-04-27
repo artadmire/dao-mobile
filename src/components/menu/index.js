@@ -27,7 +27,7 @@ function Menu(props) {
        <NavLink className="navtab" onClick={hideMenu} to='/about'>About</NavLink>
        <NavLink className="navtab" onClick={hideMenu} to='/account'>Account</NavLink>
        <NavLink className="navtab" onClick={handlerHideModal} to='/notFind'>Bridge</NavLink>
-       <span className="menu-span">{chainMap[props.chainId] || 'Wrong'}</span>
+       <span className={`menu-span ${chainMap[props.chainId] ? '' : 'wrong'}`}>{chainMap[props.chainId] || 'Wrong NetWork'}</span>
        {show ? <ComingModel  hideModal={handlerHideModal}/> : null}
     </div>
   );

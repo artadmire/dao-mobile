@@ -114,30 +114,10 @@ function Account (props) {
   return (
     <div className="account">
       <div className="account-content">
-        {/* <div  className="account-wallet">
-          <div className="wallet">
-            <label>
-                    Your Wallet :
-            </label>
-            <span>
-              {account}
-            </span>
-          </div>
-          <div className="account-level">
-            <Level level={data.userLv}/>
-          </div>
-          <div className="daos-count">
-            <img src={wallet}/>
-            <div>
-              you have <span className="daos-number">{balance || 0}</span> DAOs in your wallet and <span className="daos-number-locked">{ANOTotalStakeAccount || 0}</span> locked-in
-            </div>
-          </div>
-        </div>
-         */}
         <LevelMap  ANOTotalStakeAccount={ANOTotalStakeAccount} balance={balance} account={account} level={data.userLv}/>
         {/* data && data.kyc ? null :  */}
         {
-          <div className="verified">
+          data && data.kyc ? null : <div className="verified">
           Some pools may requre you to be KYC verified 
           <div>KYC for DAOStarter projects</div>
           </div>
