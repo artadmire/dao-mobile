@@ -180,7 +180,7 @@ export const claim = async () => {
 // 提取本金
 export const withdraw = async (number) => {
   const { GofPoolContract = {at: () => {}}, chainAccount } = ctx.data;
-  const pool = await GofPoolContract && GofPoolContract.at(window.offerAddress);
+  const pool = GofPoolContract && await GofPoolContract.at(window.offerAddress);
   try {
     let res = await pool.withdraw(
       convertByEth(number) + '',
@@ -198,13 +198,11 @@ export const withdraw = async (number) => {
 // 提取本金
 export const withdrawV2 = async (number) => {
   const { GofPoolContractV2 = {at: () => {}}, chainAccount } = ctx.data;
-  const pool = await GofPoolContractV2 && GofPoolContractV2.at(ANOPoolcontractAddressV2);
+  const pool = GofPoolContractV2 && await GofPoolContractV2.at(ANOPoolcontractAddressV2);
   try {
     let res = await pool.withdraw(
       convertByEth(number) + '',
-      {
-        from: chainAccount
-      }
+      convertByEth(number) + ''
     );
     // alert('success')
     return res;
