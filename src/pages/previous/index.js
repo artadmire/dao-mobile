@@ -1,6 +1,6 @@
 import React ,{useState, useEffect}from 'react'
 import './index.css'
-import PreviousProjectItem from '../home/components/previousProjects/previousProjectItem'
+import PreviousProjectItem from '../home/components/inProjects/previousProjectItem'
 import MyBottom from '../../components/myBottom'
 import { getPerviousProjects} from '@/service'
 import { perviousProjectsData} from '@/service/mock'
