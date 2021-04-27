@@ -31,7 +31,7 @@ export default function Level (props) {
               START
           </strong>
           <span>
-
+            0 DSTs
           </span>
           {/* <img  src={bronze}/> */}
         </li>
@@ -40,7 +40,7 @@ export default function Level (props) {
         EXPERIENCED
           </strong>
           <span>
-                2,000 DSTs
+          2,000 DSTs
           </span>
           {/* <img  src={gold}/> */}
         </li>

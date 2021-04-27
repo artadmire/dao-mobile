@@ -9,11 +9,13 @@ li{
     background: #FFF;
     box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    width: 100%;
     margin-bottom: 36px;
 }
 .previous-project-item{
     background: #FFF;
     margin-bottom: 24px;
+    box-sizing: border-box;
    padding:32px;
    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.1);
    border-radius: 10px;

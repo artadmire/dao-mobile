@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './index.css'
 import MyBottom from '../../components/myBottom'
-import Level from '../../components/LevelMapP'
+import Level from '../../components/Level'
 import bronze from '../../assets/img/bronze@2x.png'
 import './index.css'
 import { store } from '@/store'
