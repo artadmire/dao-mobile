@@ -120,7 +120,7 @@ function Account (props) {
         {/* data && data.kyc ? null :  */}
         {
           data && data.kyc ? null : <div className="verified">
-          Some pools may requre you to be KYC verified 
+          Some pools may requre you to be KYC verified
           <div>KYC for DAOStarter projects</div>
           </div>
         }
@@ -142,18 +142,18 @@ function Account (props) {
                 <ul>
                   <li>
                     <span>
-                                    less than 10 days ago
+                                    less than 7 days ago
                     </span>
                     <span>
-                                    30%
+                                    40%
                     </span>
                   </li>
                   <li>
                     <span>
-                                    less than 20 days ago
+                                    less than 15 days ago
                     </span>
                     <span>
-                                    25%
+                                    30%
                     </span>
                   </li>
                   <li>
