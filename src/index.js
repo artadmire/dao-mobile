@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import 'lib-flexible'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import Vconsole from 'vconsole'
+
+new Vconsole()
 
 ReactDOM.render(
   <React.StrictMode>
