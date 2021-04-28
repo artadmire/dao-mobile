@@ -69,6 +69,11 @@ export function accountReducer (state = initState, action) {
       ...state,
       chainId: action.payload
     }
+  case 'WRONG':
+    return {
+      ...state,
+      wrong: action.payload
+    }
   default:
     return {
       ...state

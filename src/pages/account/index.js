@@ -21,7 +21,7 @@ import {updateAccount} from '../../events/contracts/accounts'
 
 
 function Account (props) {
-  const { account, balances, isApprove, ANOTotalStakeAccount } = props
+  const { account, balances, isApprove, ANOTotalStakeAccount, wrong } = props
   const [visible, setVisible] = useState(false)
   const [data, setData] = useState({})
   const [modalLeftBun, setModalLeftBun] = useState('APPROVE')
@@ -120,7 +120,7 @@ function Account (props) {
   return (
     <div className="account">
       <div className="account-content">
-        <LevelMap  ANOTotalStakeAccount={ANOTotalStakeAccount} balance={balance} account={account} level={data.userLv}/>
+        <LevelMap wrong={wrong}  ANOTotalStakeAccount={ANOTotalStakeAccount} balance={balance} account={account} level={data.userLv}/>
         {/* data && data.kyc ? null :  */}
         {
           data && data.kyc ? null : <div className="verified">
@@ -238,5 +238,5 @@ function Account (props) {
     </div>
   )
 }
-export default connect(({account, balancesAccount, isApproveAccount, ANOTotalStakeAccount}) =>
-  ({account, balances: balancesAccount, isApprove: isApproveAccount, ANOTotalStakeAccount}))(Account)
+export default connect(({account, balancesAccount, isApproveAccount, ANOTotalStakeAccount, wrong}) =>
+  ({account, balances: balancesAccount, isApprove: isApproveAccount, ANOTotalStakeAccount, wrong}))(Account)

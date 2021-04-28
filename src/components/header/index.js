@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import whiteMenu from '@/assets/img/menu@2x2.png'
 import close from '@/assets/img/delete2.png'
 import imgURL from '@/assets/img/logo3x.png';
@@ -7,13 +7,20 @@ import {  withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import ctx from '../../events';
 import { showInfo } from '../Modal';
+import { wrongAction} from '@/store/actions'
+import { store } from '@/store'
 
+const chainMap = {
+  1: 'ETH',
+  128: 'HECO',
+  56: 'BSC'
+}
  function Header(props) {
-  const {history, onChange, showMenu, account, chainId} = props;
+  const {history, onChange, showMenu, account, chainId, wrong} = props;
   
   const connectWallet = () => {
     const { chainAccount } = ctx.data;
-    if (chainAccount) {
+    if (chainAccount && !wrong) {
       showInfo({
         content: `Your wallet address is already connected:\n${chainAccount}`
       });
@@ -21,6 +28,11 @@ import { showInfo } from '../Modal';
     }
     ctx.event.emit('connectWallet');
   }
+
+  useEffect(() => {
+    const wrong = !chainMap[chainId]
+    store.dispatch(wrongAction(wrong))
+  }, [chainId])
 
   function showMenus() {
     typeof onChange === 'function' && onChange(true)
@@ -46,4 +58,4 @@ import { showInfo } from '../Modal';
     )
 }
 
-export default  connect(({account, chainId}) => ({account, chainId}))(withRouter(Header))
+export default  connect(({account, chainId, wrong}) => ({account, chainId, wrong}))(withRouter(Header))
