@@ -9,15 +9,20 @@ function MyModal (props) {
     typeof onChange === 'function' && onChange(e.target.value)
   }
   function showMaxValue () {
-    const {onChange} = props
-    typeof onChange === 'function' && onChange(props.ANOTotalStakeAccount || 0)
+    const {onChange, type, ANOTotalStakeAccount, balance} = props
+    const valueMap = {
+      1: balance,
+      2: ANOTotalStakeAccount,
+    }
+    console.log(valueMap[type], 'jj')
+    typeof onChange === 'function' && onChange(valueMap[type])
   }
   return (
     <div className="my-modal">
       <div className="parameter-detail-bottom">
         <div className="deposited-availale">
           <div className="title">
-          YOU have <span>{props.balance}</span> DAOs locked-in
+          YOU have <span>{props.ANOTotalStakeAccount || 0}</span> DAOs locked-in
           </div>
           <div className="cont">
             <div className="cont-first">
@@ -25,7 +30,7 @@ function MyModal (props) {
                                       INPUT
               </span>
               <span>
-                                 Your Wallet Balance: <label>{props.ANOTotalStakeAccount || 0}</label>
+                                 Your Wallet Balance: <label>{props.balance || 0}</label>
               </span>
             </div>
             <div className="cont-last">
