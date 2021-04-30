@@ -7,7 +7,7 @@ import Investor from './components/investors'
 function About() {
   return (
     <div className="my-about">
-     
+
         <div className="contents">
         <div>
           <p className="desc">
@@ -22,7 +22,7 @@ function About() {
          </p>
         </div>
         <Info/>
-        <Investor/>
+        {/*<Investor/>*/}
       </div>
       <MyBottom className="my-about-bottom"/>
     </div>
