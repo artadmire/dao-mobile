@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 import Vconsole from 'vconsole'
 
-new Vconsole()
+/*new Vconsole()*/
 
 ReactDOM.render(
   <React.StrictMode>
