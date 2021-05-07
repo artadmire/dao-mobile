@@ -13,11 +13,12 @@ import { store } from '@/store'
 const chainMap = {
   1: 'ETH',
   128: 'HECO',
+  70: 'HSC',
   56: 'BSC'
 }
  function Header(props) {
   const {history, onChange, showMenu, account, chainId, wrong} = props;
-  
+
   const connectWallet = () => {
     const { chainAccount } = ctx.data;
     if (chainAccount && !wrong) {
@@ -42,7 +43,7 @@ const chainMap = {
   }
   function address (account, chainId) {
     if (!account) {return 'Unlock Wallet'}
-    if (chainId != 1 && chainId != 56 && chainId != 128) {return 'Wrong NetWork'}
+    if (chainId != 1 && chainId != 56 && chainId != 128 && chainId != 70) {return 'Wrong Network'}
     return account;
   }
   function goHome(){
@@ -51,7 +52,7 @@ const chainMap = {
     return (
         <header  className="header">
           <p onClick={goHome}><img src={imgURL}/><span>DAOStarter</span></p>
-          <span onClick={connectWallet} className={`unlock-wallet ${address(account, chainId) === 'Wrong NetWork' && 'wrong'}`} >{address(account, chainId)}</span>
+          <span onClick={connectWallet} className={`unlock-wallet ${address(account, chainId) === 'Wrong Network' && 'wrong'}`} >{address(account, chainId)}</span>
           {showMenu ? <img onClick={hideMenu} src={close}/>
           : <img onClick={showMenus} src={whiteMenu}/>}
         </header>

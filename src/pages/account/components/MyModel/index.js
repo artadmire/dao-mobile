@@ -22,7 +22,7 @@ function MyModal (props) {
       <div className="parameter-detail-bottom">
         <div className="deposited-availale">
           <div className="title">
-          YOU have <span>{props.ANOTotalStakeAccount || 0}</span> DAOs locked-in
+          YOU have <span>{props.ANOTotalStakeAccount || 0}</span> DSTs locked-in
           </div>
           <div className="cont">
             <div className="cont-first">

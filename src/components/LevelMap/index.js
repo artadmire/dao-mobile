@@ -26,7 +26,7 @@ export default function LevelMap (props) {
   return (
     <div className="my-levelMap">
       {level == 0 ? <p className="account-level-desc">
-        You don’t have a DuckSTARTER Tier yet. Please upgrade your level.
+        You don’t have a DAOStarter Tier yet. Please upgrade your level.
       </p> : null}
       <div className="wrap-levelMap-top">
         <div className="left">

@@ -8,7 +8,8 @@ import {connect} from 'react-redux'
 const chainMap = {
   1: 'ETH',
   128: 'HECO',
-  56: 'BSC'
+  56: 'BSC',
+  70: 'HSC'
 }
 
 function Menu(props) {
@@ -28,7 +29,7 @@ function Menu(props) {
        <NavLink className="navtab" onClick={hideMenu} to='/about'>About</NavLink>
        <NavLink className="navtab" onClick={hideMenu} to='/account'>Account</NavLink>
 
-       <span className={`menu-span ${chainMap[props.chainId] ? '' : 'wrong'}`}>{chainMap[props.chainId] || 'Wrong NetWork'}</span>
+       <span className={`menu-span ${chainMap[props.chainId] ? '' : 'wrong'}`}>{chainMap[props.chainId] || 'Wrong Network'}</span>
        {show ? <ComingModel  hideModal={handlerHideModal}/> : null}
     </div>
   );
