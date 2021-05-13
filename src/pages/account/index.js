@@ -196,7 +196,7 @@ function Account (props) {
               </div>
               <div className="stars">
                 <div>
-                            your stars：
+                            your stats：
                 </div>
                 <ul>
                   <li>

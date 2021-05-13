@@ -290,7 +290,6 @@ export const totalSupply = async () => {
   const total = typeof pool.offeredOf === 'function' && await pool.offeredOf(chainAccount);
   ctx.data.ANOtotalSupply =  convertByWei(total);
   store.dispatch(totalSupplyAction(ctx.data.ANOtotalSupply))
-
 };
 // claimed 可取出的代币额度
 export const claimedOf = async () => {

@@ -19,13 +19,13 @@ function Parameter (props) {
   const [hours, setHours] = useState('00')
   const [minutes, setMins] = useState('00')
   const [seconds, setSeconds] = useState('00')
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(100)
 
 
   const { isApprove: _approve, account, balances = 0,
     totalSupply = 0, claimed = 0 } = props
   const balance = ((balances || 0) / 10000000000).toFixed(4) || 0
-
+  const poolID = props.match.params.ID;
   useEffect(() => {
     // 初始化区块链库
     ctx.event.emit('initEthereum');
@@ -64,7 +64,7 @@ function Parameter (props) {
 
   async function fetchData (account) {
     try {
-      const res = await getDeposit({account});
+      const res = await getDeposit({account, poolID});
       if (!res || !res.data || !res.data.data) {throw new Error('')}
       const data = res.data.data
       // data.hasRoot = true
@@ -79,7 +79,7 @@ function Parameter (props) {
   async function handleApprove () {
     if (_approve || !data.hasRoot) {return}
     const res = await approve();
-    res && store.dispatch({type: 'ISAPPROVE', payload: true})
+    store.dispatch({type: 'ISAPPROVE', payload: true})
     updateAccount()
     fetchData(account)
   }
@@ -113,7 +113,7 @@ function Parameter (props) {
     setSeconds(_seconds)
 
   }
-  const now = new Date().valueOf()
+  const now = data.nowDate;
   const perid =  (data.endDate * 1 - data.startDate * 1) || 0
   const diff = data.endDate * 1 - now
   const past = now - data.startDate * 1
@@ -121,7 +121,7 @@ function Parameter (props) {
   if(diff <=0 ) {
     percent = 1
   }
-  
+
   return (
     <div className="my-parameter">
       <div className="parameter-content">
@@ -130,7 +130,7 @@ function Parameter (props) {
           <div className="parameter-detail-top">
           <div className="ethbox-details">
               <div className="ethbox-details-title">
-                         ethbox details
+                {data.objectName} details
               </div>
               <div className="ethbox-details-title-border">
 
@@ -155,7 +155,7 @@ function Parameter (props) {
                               Total Rewards
                   </span>
                   <span>
-                  {data.totalRewards || 0} EBOX Token
+                  {data.totalRewards || 0} {` ${data.earnToken || '-'}`} Token
                   </span>
 
                 </li>
@@ -191,7 +191,7 @@ function Parameter (props) {
                   Max. deposit available
                   </span>
                   <span>
-                    {data.maxDepositAvailable || 0}
+                    {data.maxDepositAvailable || 100}
                   </span>
                 </li>
                 <li>
@@ -211,9 +211,9 @@ function Parameter (props) {
                   <span>End Date</span>
                 </div>
                 <div className="dates-detail-time">
-                  <span>{moment(data.startDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span>
+                  <span>{moment(data.startDate * 1).format('DD-MM-YYYY hh:mm')} UTC</span>
                   {
-                    diff > 0 ? <span>{moment(data.endDate * 1).format('YYYY-MM-DD hh:mm')} UTC</span> : <span>Finished</span>
+                    diff > 0 ? <span>{moment(data.endDate * 1).format('DD-MM-YYYY hh:mm')} UTC</span> : <span>Finished</span>
                   }
                 </div>
                 <div className="wrap-dates-detail-process">
@@ -221,7 +221,7 @@ function Parameter (props) {
                 </div>
               </div>
             </div>
-        
+
           </div>
           <div className="parameter-detail-bottom">
             <div className="deposited-availale">
@@ -238,10 +238,10 @@ function Parameter (props) {
                   </span>
                 </div>
                 <div className="cont-last">
-                       <input value={value} onInput={changeValue} placeholder="0.0"/>
+                       <input value={value} readOnly onInput={changeValue} placeholder="0.0"/>
                   <div>
                     <span onClick={showMaxValue}>
-                         Max 
+                         Max
                     </span>
                     {/* <img src={bronze}/> */}
                     {data.depositToken}
@@ -285,7 +285,7 @@ function Parameter (props) {
               </ul>
               <div className="sum">
                 <div>
-                    Reward ({claimed} while calculating)
+                    Reward ({totalSupply-claimed} while calculating)
                 </div>
                 {/* <div>
                   {data.totalRewards || 0} EBOX Token
@@ -302,7 +302,5 @@ function Parameter (props) {
     </div>
   );
 }
-
-
 export default connect(({isApprove, account, balances, totalSupply, claimed}) =>
   ({isApprove, account, balances, totalSupply, claimed}))(Parameter);

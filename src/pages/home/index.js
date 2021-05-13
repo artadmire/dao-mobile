@@ -25,7 +25,7 @@ function Home(props) {
 
   useEffect(async () => {
     fetchPervious()
-  }, [])
+  }, [chainId])
 
   useEffect(async () => {
     fetchProjects()

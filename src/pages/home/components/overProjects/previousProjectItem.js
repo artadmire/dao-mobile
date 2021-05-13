@@ -4,13 +4,13 @@ import {NavLink} from 'react-router-dom'
 
 export default function PreviousProjectItem(props) {
     const { data = {}, account } = props;
-    const { name = '', logo = '', offerAddress = '', dtokenAddress = '', method = '', deposit = '', earn = '', totalDeposited = '', avaliable = '', status } = data || {}
+    const { name = '', logo = '', offerAddress = '', dtokenAddress = '', method = '', deposit = '', earn = '', totalDeposited = '', avaliable = '', status, poolID = '' } = data || {}
     function handleClick () {
         window.offerAddress = offerAddress
         window.dtokenAddress = dtokenAddress
       }
     return (
-        <NavLink to='/parameter' onClick={handleClick} className="previous-project-item-wrap">
+        <NavLink to={'/parameter/' + poolID} onClick={handleClick} className="previous-project-item-wrap">
         <div className="previous-project-item" >
            <div className="section1">
                 <img src={logo}/>

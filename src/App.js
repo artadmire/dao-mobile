@@ -41,7 +41,7 @@ function App() {
               <Route path="/account" component={Account}></Route>
               <Route path="/apply" component={Apply}></Route>
               <Route path="/project-list" component={PreviousList}></Route>
-              <Route path="/parameter" component={Parameter}></Route>
+              <Route path="/parameter/:ID" component={Parameter}></Route>
               <Redirect to='/'/>
             </Switch>
             {showMenu ? <Menu onChange={changeShow}/> : null}
