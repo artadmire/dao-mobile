@@ -44,7 +44,7 @@ export default function PreviousProjectItem(props) {
             <div className="section3">
             <ul>
             <li>
-          <div>Total USDC deposited</div>
+          <div>Total USDT deposited</div>
           <div>{totalDeposited}</div>
         </li>
         <li>

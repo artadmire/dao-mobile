@@ -179,7 +179,7 @@ function Parameter (props) {
               <ul>
                 <li>
                 <span>
-                    Total USDC deposited
+                    Total USDT deposited
                   </span>
                   <span>
                     {data.totalDeposited || 0}
@@ -226,7 +226,7 @@ function Parameter (props) {
           <div className="parameter-detail-bottom">
             <div className="deposited-availale">
               <div className="title">
-                       YOU HAVE <span>{totalSupply / (data.ratio || 1) || 0}</span> {data.depositToken} DEPOSITED from <span>{balance || 0} </span>available for your TIER
+                       YOU HAVE <span>{totalSupply / (data.ratio || 1) || 0}</span> {data.depositToken} DEPOSITED {/*from <span>{balance || 0} </span>available for your TIER*/}
               </div>
               <div className="cont">
                 <div className="cont-first">
@@ -248,10 +248,10 @@ function Parameter (props) {
                   </div>
                 </div>
               </div>
-              <div className="sum">
+              {/*<div className="sum">
               <div>{totalSupply / (data.ratio || 1)} Deposited</div>
                 <div>TOTAL: {balance || 0} {data.depositToken}</div>
-              </div>
+              </div>*/}
               <div className="handler">
                 <span className={(!_approve && data.hasRoot) ? 'active' : ''} onClick={handleApprove} >
                   approve
@@ -285,7 +285,7 @@ function Parameter (props) {
               </ul>
               <div className="sum">
                 <div>
-                    Reward ({totalSupply-claimed} while calculating)
+                  Reward {totalSupply} {` ${data.earnToken || '-'}`}
                 </div>
                 {/* <div>
                   {data.totalRewards || 0} EBOX Token
