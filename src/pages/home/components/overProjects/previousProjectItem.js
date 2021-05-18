@@ -1,10 +1,15 @@
 import React from 'react'
 import './previousProjectItem.css'
 import {NavLink} from 'react-router-dom'
-
+const chainMap = {
+    1: 'ETH-Network',
+    128: 'HECO-Network',
+    70: 'HSC-Network',
+    56: 'BSC-Network'
+}
 export default function PreviousProjectItem(props) {
     const { data = {}, account } = props;
-    const { name = '', logo = '', offerAddress = '', dtokenAddress = '', method = '', deposit = '', earn = '', totalDeposited = '', avaliable = '', status, poolID = '' } = data || {}
+    const { name = '', logo = '', offerAddress = '', dtokenAddress = '', method = '', deposit = '', earn = '', totalDeposited = '', available = '', status, poolID = '', chainID = '' } = data || {}
     function handleClick () {
         window.offerAddress = offerAddress
         window.dtokenAddress = dtokenAddress
@@ -18,8 +23,12 @@ export default function PreviousProjectItem(props) {
            </div>
            <div className="border-top"></div>
            <ul className="section2">
-           <li>
-          <div>METHOD</div>
+        <li>
+            <div>Chain</div>
+            <div>{chainMap[chainID]}</div>
+        </li>
+        <li>
+          <div>Method</div>
           <div>{method}</div>
         </li>
         <li>
@@ -36,15 +45,15 @@ export default function PreviousProjectItem(props) {
             <div className="section3">
             <ul>
             <li>
-          <div>Total USDC deposited</div>
+          <div>Total USDT deposited</div>
           <div>{totalDeposited}</div>
         </li>
         <li>
-          <div>ethbox tokens available</div>
-          <div>{avaliable}</div>
+          <div>{earn}s available</div>
+          <div>{available}</div>
         </li>
         <li>
-          <div>status</div>
+          <div>Status</div>
           <div>{status ? 'open' : 'over'}</div>
         </li>
                 </ul>

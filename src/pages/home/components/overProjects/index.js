@@ -15,9 +15,9 @@ export default function PreviousProject(props) {
                    list.length && list.map((item,index)=>  <PreviousProjectItem account={account} key={index} data={item} styles={{"marginRight":"0"}}/>)
                 }
          </div>
-         <Link className="show-all" to="/project-list">
+         {/* <Link className="show-all" to="/project-list">
             <span>Show all previous projects</span><img src={arrow}/>
-         </Link>
+         </Link>*/}
         </div>
     )
 }

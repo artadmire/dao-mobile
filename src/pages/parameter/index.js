@@ -285,7 +285,7 @@ function Parameter (props) {
               </ul>
               <div className="sum">
                 <div>
-                  Reward {totalSupply} {` ${data.earnToken || '-'}`}
+                  Reward {totalSupply - claimed} {` ${data.earnToken || '-'}`}
                 </div>
                 {/* <div>
                   {data.totalRewards || 0} EBOX Token
