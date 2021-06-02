@@ -67,6 +67,9 @@ function Parameter (props) {
       const res = await getDeposit({account, poolID});
       if (!res || !res.data || !res.data.data) {throw new Error('')}
       const data = res.data.data
+      window.offerAddress = data.offerAddress
+      window.dtokenAddress = data.dAddress
+      ctx.event.emit('initEthereum');
       // data.hasRoot = true
       setData(data)
       setLeftTime(data.harvestDate)
@@ -291,7 +294,7 @@ function Parameter (props) {
                   {data.totalRewards || 0} EBOX Token
                 </div> */}
               </div>
-              <div className={`handler harvest ${leftTime <= 0 && data.hasRoot ? 'active' : ''}`}  onClick={handleHarvest}>
+              <div className={`handler harvest ${leftTime <= 0 && data.hasRoot && claimed == 0? 'active' : ''}`}  onClick={handleHarvest}>
               Harvest
               </div>
             </div>
