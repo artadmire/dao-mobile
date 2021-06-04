@@ -12,7 +12,8 @@ function myBottom(props) {
   const { className = ''} = props
   return (
     <div className={`myBottom ${className}`}>
-      <p className="terms-privacy"><a href="https://daostarter.oss-cn-hangzhou.aliyuncs.com/DAOSTARTER%20TERMS%20AND%20CONDITIONS.pdf" className="terms">Terms</a>
+      <p className="terms-privacy">
+          <a href="https://daostarter.oss-cn-hangzhou.aliyuncs.com/DAOSTARTER%20TERMS%20AND%20CONDITIONS.pdf" className="terms">Terms</a>
           <a  href="https://daostarter.oss-cn-hangzhou.aliyuncs.com/PRIVACY%20POLICY.pdf">Privacy</a>
       </p>
       <div className="icon">
